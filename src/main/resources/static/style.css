@@ -1,0 +1,76 @@
+
+.container {
+    padding: 20px;
+}
+
+/* Article headings */
+h2 > a {
+    color: black;
+}
+
+h2 > a:hover {
+    text-decoration: none;
+    color: grey;
+}
+
+.featurette-image {
+    align-content: center;
+    vertical-align: middle;
+}
+
+/* Navbar */
+#bootstrap-override a.nav-link:hover{
+    color: green;
+    text-shadow: 2px 2px 4px green;
+}
+
+#bootstrap-override h1.navbar-brand {
+    color: green;
+}
+
+#bootstrap-override h1.navbar-brand span {
+    font-size: 150%;
+    color: white;
+    text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
+}
+
+/* Rounded images */
+#bootstrap-override img.rounded-circle {
+    width: 140px;
+    height: 140px;
+    border: 2px solid #021a40;
+}
+
+#bootstrap-override img.rounded-circle:hover {
+    width: 160px;
+    height: 160px;
+    border: 5px double grey;
+}
+
+/* Modals */
+.modal-header {
+    padding: 5px;
+}
+
+#signInForm {
+    padding: 0px;
+}
+
+#subscribeModal {
+    padding: 0px;
+}
+
+input.form-control {
+    margin-bottom: 5px;
+}
+
+#genderRadioButtons {
+    text-align: center;
+}
+
+/* Media Query - Modal Subscribe */
+@media(max-width: 372px){
+    #genderRadioButtons{
+      text-align:left;
+    }
+}

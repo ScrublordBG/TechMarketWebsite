@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Demo website about cooking recipes">
+    <meta name="keywords" content="cooking, recipes, demo">
+    <meta name="author" content="Vladimir Georgiev">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <title>TechMarket</title>
+  </head>
+  <body id="bootstrap-override">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <h1 class="navbar-brand mb-0 h1"><span>Tech</span> Market</h1>
+        <!-- Button to collapses the navbar when resizing website -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navigation bar -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
+              </li>
+            <li class="nav-item active" data-toggle="modal" data-target="#subscribeModal">
+                <a class="nav-link" href="#">Subscribe <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active" data-toggle="modal" data-target="#logInModal">
+                <a class="nav-link" href="#">Sign in <span class="sr-only">(current)</span></a>
+            </li>
+            <!-- Dropdown menu -->
+            <li class="nav-item">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Products
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#">Cell phones</a>
+                      <a class="dropdown-item" href="#">Tablets</a>
+                      <a class="dropdown-item" href="#">TVs</a>
+                    </div>
+                  </div>
+            </li>
+            <li class="nav-item active" data-toggle="modal" data-target="#cartModal">
+                <a class="nav-link" href="#">Shopping cart <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <!-- Search form for searching recipes by recipe name -->
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+      <!-- Subscribe Modal -->
+      <div id="subscribeModal" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Subscribe form -->
+                  <form class="form-signin container" id="subscribeForm" action="./users.json">
+                      <h2 class="form-signin-heading">Please sign up</h2>
+                      <label for="username" class="sr-only">Username</label>
+                      <input id="subscribersUsername" type="text" class="form-control" placeholder="Username" required autofocus>
+                      <label for="inputEmail" class="sr-only">Email address</label>
+                      <input id="subscribersEmail" type="email" class="form-control" placeholder="Email address" required autofocus>
+                      <label for="inputPassword" class="sr-only">Password</label>
+                      <input id="subscribersPassword" type="password" class="form-control" placeholder="Password" required>
+                      <label for="inputPassword" class="sr-only">Confirm Password</label>
+                      <input id="subscribersPasswordConf" type="password" class="form-control" placeholder="Confirm Password" required>
+                      <!-- Gender radio buttons -->
+                      <div class="container" id="genderRadioButtons">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                          <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                          <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                          <label class="form-check-label" for="inlineRadio3">Other</label>
+                        </div>
+                      </div>
+                      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Log-in Modal -->
+      <div id="logInModal" class="modal fade" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Sign-in form -->
+                  <form class="form-signin container" id="signInForm" action="./users.json">
+                      <h2 class="form-signin-heading">Please sign in</h2>
+                      <label for="inputEmail" class="sr-only">Email address</label>
+                      <input id="signInEmail" type="email" class="form-control" placeholder="Email address" required autofocus>
+                      <label for="inputPassword" class="sr-only">Password</label>
+                      <input id="signInPassword" type="password" class="form-control" placeholder="Password" required>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                      </div>
+                      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Carousel -->
+    <div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="2000" data-pause="hover">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <img class="d-block w-100" src="images/salad1000x300.png" alt="Salad">
+              <div class="carousel-caption d-none d-md-block">
+                  <h5>Exercitation excepteur non dolor elit fugiat incididunt pariatur.</h5>
+                  <p>Ullamco commodo consequat dolore exercitation laborum. Commodo aliqua in nostrud anim est laborum magna occaecat cupidatat dolor. Proident ea laboris incididunt pariatur aliqua ullamco minim velit tempor. Pariatur ex ipsum consectetur ullamco. Sunt aliqua nisi minim cupidatat exercitation minim excepteur est proident proident officia.</p>
+                  <a href="#" class="btn btn-secondary">Read More</a>
+                </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="images/chicken1000x300.jpg" alt="Chieck">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Exercitation excepteur non dolor elit fugiat incididunt pariatur.</h5>
+                <p>Ullamco commodo consequat dolore exercitation laborum. Commodo aliqua in nostrud anim est laborum magna occaecat cupidatat dolor. Proident ea laboris incididunt pariatur aliqua ullamco minim velit tempor. Pariatur ex ipsum consectetur ullamco. Sunt aliqua nisi minim cupidatat exercitation minim excepteur est proident proident officia.</p>
+                <a href="#" class="btn btn-secondary">Read More</a>
+              </div>
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="images/sushi-1000x300.jpg" alt="Sushi">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Exercitation excepteur non dolor elit fugiat incididunt pariatur.</h5>
+                <p>Ullamco commodo consequat dolore exercitation laborum. Commodo aliqua in nostrud anim est laborum magna occaecat cupidatat dolor. Proident ea laboris incididunt pariatur aliqua ullamco minim velit tempor. Pariatur ex ipsum consectetur ullamco. Sunt aliqua nisi minim cupidatat exercitation minim excepteur est proident proident officia.</p>
+                <a href="#" class="btn btn-secondary">Read More</a>
+              </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    
+    <!-- What's new? section and Articles -->
+   
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+    <div class="container marketing">
+
+        <!-- Three columns of text below the carousel - What's new? -->
+        <div class="row"><a class="text-centered">What's new?</a></div>
+        <div class="row">
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="images/spicy_tuna.jpeg" alt="Spicy tuna image">
+            <h2>
+              <a href="#">Spicy tuna rolls</a>
+            </h2>
+            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="images/shkembe_chorba.jpg" alt="shkembe chorba (Tripe soup)">
+            <h2>
+              <a href="#">Bulgarian tripe soup</a>
+            </h2>
+            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <img class="rounded-circle" src="images/chocolate_cake.jpg" alt="Chocolate cake">
+            <h2>
+              <a href="#">The ultimate chocolate cake</a>
+            </h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+  
+  
+        <!-- Articles -->
+  
+        <hr class="featurette-divider">
+  
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">
+                <a href="#">6 Red-Carpet-Ready Recipes For An Award-Winning Watch Party</a>
+            </h2>
+            <p class="lead">A star-studded awards show wouldn’t be complete without a selection of savory snacks. From simple to sophisticated, here’s a *toast* to the recipes that will earn you all the watch-party cred this weekend.</p>
+          </div>
+          <div class="col-md-5">
+            <img id="img1" class="featurette-image img-fluid mx-auto" src="images/six_carpet_ready_recipes_for_party.jpg" data-src="holder.js/500x500/auto" alt="Six carpet ready recipes for party">
+          </div>
+        </div>
+  
+        <hr class="featurette-divider">
+  
+        <div class="row featurette">
+          <div class="col-md-7 push-md-5">
+            <h2 class="featurette-heading">
+              <a href="#">Top 10 Chefs Of The World</a>
+            </h2>
+            <p class="lead">For anyone whose minds and hearts are mostly dominated by your stomachs, a delicious and satisfying dish could lighten up even the darkest of days in just a flick. The obsession in the food is observed to be much more evident in today’s times having all of the recipe books, tv cooking shows as well as the cooking sites. And how could you forget about all those big figures which basically inspire how we prepare food, eat and even think? That’s right, the chefs! Chefs are the people driving the craze of food and unquestionably they dominate the culinary world.</p>
+          </div>
+          <div class="col-md-5 pull-md-7">
+            <img class="featurette-image img-fluid mx-auto" src="images/gordon_ramsey.jpg" data-src="holder.js/500x500" alt="Gordon Ramsey">
+          </div>
+        </div>
+  
+        <hr class="featurette-divider">
+  
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">
+                <a href="#">The Origins Of Sushi</a>
+            </h2>
+            <p class="lead">Sushi has been around for a surprisingly long period of time, although not in its present form. The history of sushi is an interesting tale of the evolution of a simple dish. What was to become sushi was first mentioned in China in the second century A.D. Originally, sushi arose out of a way of preserving food. Fish was placed in rice and allowed to ferment, which allowed an individual to keep the fish edible for some time. The rice was thrown away and the fish was eaten when needed or wanted.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="images/sushi_history.jpg" data-src="holder.js/500x500/auto" alt="sushi history">
+          </div>
+        </div>
+  
+        <hr class="featurette-divider">
+  
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">
+                <a href="#">Most Popular Mexican Food</a>
+            </h2>
+            <p class="lead">Mexico is among the countries with the best cuisine in the world. Mexican cuisine is characterized by flavorful ingredients such as corn, chili peppers, tomatoes, cocoa, and vanilla. Mexican food also has a reputation for being spicy. The food is an important aspect of the culture, social structure and popular traditions of Mexico. Here are some of the most popular Mexican food:</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="images/Burrito.jpg" data-src="holder.js/500x500/auto" alt="Burrito">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+  
+  
+        <!-- Footer -->
+        <footer>
+          <p class="float-right"><a href="#">Back to top</a></p>
+          <p>&copy; 2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+  
+    </div><!-- /.container -->
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="https://cdn.rawgit.com/imsky/holder/master/holder.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
