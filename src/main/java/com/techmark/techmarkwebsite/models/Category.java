@@ -1,8 +1,21 @@
 package com.techmark.techmarkwebsite.models;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "categories")
 public class Category {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "CategoryID")
     private int categoryID;
+
+    @Column(name = "Name")
     private String name;
+
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
 
     public Category(){
 
@@ -27,5 +40,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }
