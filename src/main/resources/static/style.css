@@ -68,6 +68,10 @@ input.form-control {
     text-align: center;
 }
 
+#whatsNew {
+    text-align: center;
+}
+
 /* Media Query - Modal Subscribe */
 @media(max-width: 372px){
     #genderRadioButtons{
