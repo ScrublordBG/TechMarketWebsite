@@ -24,7 +24,7 @@ public class CategorySqlRepository implements CategoryRepository {
         List<Product> products = new ArrayList<>();
         try(Session session = factory.openSession()){
             session.beginTransaction();
-            products = session.get(Category.class,id).getProducts();
+            //products = session.get(Category.class,id).getProducts();
             session.getTransaction().commit();
         }
         catch (Exception e){

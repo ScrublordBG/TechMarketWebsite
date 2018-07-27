@@ -1,9 +1,12 @@
 package com.techmark.techmarkwebsite.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "products")
+//TODO: Add serialization for JSON object
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +25,7 @@ public class Product {
     @Column(name = "ImageURL")
     private String imageURL;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CategoryID")
     private Category category;
 
