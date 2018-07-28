@@ -20,8 +20,13 @@ h2 > a:hover {
 
 /* Navbar */
 #bootstrap-override a.nav-link:hover{
-    color: green;
-    text-shadow: 2px 2px 4px green;
+    color: red;
+    /*text-shadow: 2px 2px 4px green;*/
+}
+
+.dropdown-item:hover{
+    color: red;
+    font-weight: bold;
 }
 
 #bootstrap-override h1.navbar-brand {
@@ -70,6 +75,17 @@ input.form-control {
 
 #whatsNew {
     text-align: center;
+}
+
+.zoom {
+    align-self: center;
+    min-height: 280px;
+    width: 280px;
+    transition: transform .2s;
+}
+
+.fa.fa-shopping-cart {
+    font-size: 20px;
 }
 
 /* Media Query - Modal Subscribe */

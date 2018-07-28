@@ -14,6 +14,9 @@
     <!-- Local CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Glyphicons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <title>TechMarket</title>
   </head>
   <body id="bootstrap-override">
@@ -29,7 +32,7 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
-              </li>
+            </li>
             <li class="nav-item active" data-toggle="modal" data-target="#subscribeModal">
                 <a class="nav-link" href="#">Subscribe <span class="sr-only">(current)</span></a>
             </li>
@@ -47,17 +50,30 @@
                       <a class="dropdown-item" href="#">Computers</a>
                       <a class="dropdown-item" href="#">Smart phones</a>
                     </div>
-                  </div>
-            </li>
-            <li class="nav-item active" data-toggle="modal" data-target="#cartModal">
-                <a class="nav-link" href="#">Shopping cart <span class="sr-only">(current)</span></a>
+                </div>
             </li>
           </ul>
+        
           <!-- Search form for searching recipes by recipe name -->
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
+
+          <ul class="navbar-nav">
+            <li class="nav-item active" data-toggle="modal" data-target="#cartModal">
+                <a class="nav-link" href="#">
+                    <span>
+                        <span>Shopping cart&nbsp;
+                            <span class="fa fa-shopping-cart"></span>
+                        </span>
+                    </span>
+                    <span class="sr-only">
+                        (current)
+                    </span>
+                </a>
+            </li>
+          </ul>
         </div>
       </nav>
 
@@ -187,98 +203,141 @@
         <h4 id="whatsNew">What's new?</h4>
         <hr>
         <div class="row">
-          <div class="col-lg-4">
-            <img class="img-thumbnail mx-auto" style="width: 300px;" src="images/spicy_tuna.jpeg" alt="Spicy tuna image">
-            <h2>
-              <a href="#">Spicy tuna rolls</a>
-            </h2>
-            <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="img-thumbnail mx-auto" style="width: 300px;" src="images/shkembe_chorba.jpg" alt="shkembe chorba (Tripe soup)">
-            <h2>
-              <a href="#">Bulgarian tripe soup</a>
-            </h2>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
-          <div class="col-lg-4">
-            <img class="img-thumbnail mx-auto" style="width: 300px;" src="images/chocolate_cake.jpg" alt="Chocolate cake">
-            <h2>
-              <a href="#">The ultimate chocolate cake</a>
-            </h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div><!-- /.col-lg-4 -->
+          <div class="col-sm-3">
+            <figure class="figure">
+            <a href="https://runningzone.bg/produkt/garmin-forerunner-645/">
+                <img src="images/spicy_tuna.jpeg" class="figure-img img-fluid rounded zoom" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">
+                    <h6 class="entry-title">
+                        <a href="https://runningzone.bg/produkt/garmin-forerunner-645/" title="Garmin Forerunner 645">Garmin Forerunner 645</a>
+                    </h6>
+                    <span>
+                        <span>Price tag&nbsp;<span>лв.</span></span>
+                    </span>
+                </figcaption>
+            </a>
+            </figure>
+          </div>
+          <div class="col-sm-3">
+            <figure class="figure">
+            <a href="https://runningzone.bg/produkt/garmin-forerunner-645/">
+                <img src="images/shkembe_chorba.jpg" class="figure-img img-fluid rounded zoom" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">
+                    <h6 class="entry-title">
+                        <a href="https://runningzone.bg/produkt/garmin-forerunner-645/" title="Garmin Forerunner 645">Garmin Forerunner 645</a>
+                    </h6>
+                    <span>
+                        <span>Price tag&nbsp;<span>лв.</span></span>
+                    </span>
+                </figcaption>
+            </a>
+            </figure>
+          </div>
+          <div class="col-sm-3">
+            <figure class="figure">
+            <a href="https://runningzone.bg/produkt/garmin-forerunner-645/">
+                <img src="images/chocolate_cake.jpg" class="figure-img img-fluid rounded zoom" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">
+                    <h6 class="entry-title">
+                        <a href="https://runningzone.bg/produkt/garmin-forerunner-645/" title="Garmin Forerunner 645">Garmin Forerunner 645</a>
+                    </h6>
+                    <span>
+                        <span>Price tag&nbsp;<span>лв.</span></span>
+                    </span>
+                </figcaption>
+            </a>
+            </figure>
+          </div>
+          <div class="col-sm-3">
+            <figure class="figure">
+            <a href="https://runningzone.bg/produkt/garmin-forerunner-645/">
+                <img src="images/chocolate_cake.jpg" class="figure-img img-fluid rounded zoom" alt="A generic square placeholder image with rounded corners in a figure.">
+                <figcaption class="figure-caption">
+                    <h6 class="entry-title">
+                        <a href="https://runningzone.bg/produkt/garmin-forerunner-645/" title="Garmin Forerunner 645">Garmin Forerunner 645</a>
+                    </h6>
+                    <span>
+                        <span>Price tag&nbsp;<span>лв.</span></span>
+                    </span>
+                </figcaption>
+            </a>
+            </figure>
+          </div>
         </div><!-- /.row -->
-  
-  
-        <!-- Articles -->
-  
-        <hr class="featurette-divider">
-  
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">
-                <a href="#">6 Red-Carpet-Ready Recipes For An Award-Winning Watch Party</a>
-            </h2>
-            <p class="lead">A star-studded awards show wouldn’t be complete without a selection of savory snacks. From simple to sophisticated, here’s a *toast* to the recipes that will earn you all the watch-party cred this weekend.</p>
-          </div>
-          <div class="col-md-5">
-            <img id="img1" class="featurette-image img-fluid mx-auto" src="images/six_carpet_ready_recipes_for_party.jpg" data-src="holder.js/500x500/auto" alt="Six carpet ready recipes for party">
-          </div>
+          
+        <hr>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+                <div class="col-sm">
+                    <a class="brands-02" href="/en/assos" title="Assos"> 
+                        <img src="https://cdn.bike-discount.de/media/k23230/k78/thumbs/121356_2743411.jpg" data-mid="13" width="120" height="124" title="Assos" alt="Assos">  
+                        <div class="brands-02-text">Assos</div>
+                    </a>
+                </div>
+                </div>
         </div>
-  
-        <hr class="featurette-divider">
-  
-        <div class="row featurette">
-          <div class="col-md-7 push-md-5">
-            <h2 class="featurette-heading">
-              <a href="#">Top 10 Chefs Of The World</a>
-            </h2>
-            <p class="lead">For anyone whose minds and hearts are mostly dominated by your stomachs, a delicious and satisfying dish could lighten up even the darkest of days in just a flick. The obsession in the food is observed to be much more evident in today’s times having all of the recipe books, tv cooking shows as well as the cooking sites. And how could you forget about all those big figures which basically inspire how we prepare food, eat and even think? That’s right, the chefs! Chefs are the people driving the craze of food and unquestionably they dominate the culinary world.</p>
-          </div>
-          <div class="col-md-5 pull-md-7">
-            <img class="featurette-image img-fluid mx-auto" src="images/gordon_ramsey.jpg" data-src="holder.js/500x500" alt="Gordon Ramsey">
-          </div>
-        </div>
-  
-        <hr class="featurette-divider">
-  
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">
-                <a href="#">The Origins Of Sushi</a>
-            </h2>
-            <p class="lead">Sushi has been around for a surprisingly long period of time, although not in its present form. The history of sushi is an interesting tale of the evolution of a simple dish. What was to become sushi was first mentioned in China in the second century A.D. Originally, sushi arose out of a way of preserving food. Fish was placed in rice and allowed to ferment, which allowed an individual to keep the fish edible for some time. The rice was thrown away and the fish was eaten when needed or wanted.</p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="images/sushi_history.jpg" data-src="holder.js/500x500/auto" alt="sushi history">
-          </div>
-        </div>
-  
-        <hr class="featurette-divider">
-  
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">
-                <a href="#">Most Popular Mexican Food</a>
-            </h2>
-            <p class="lead">Mexico is among the countries with the best cuisine in the world. Mexican cuisine is characterized by flavorful ingredients such as corn, chili peppers, tomatoes, cocoa, and vanilla. Mexican food also has a reputation for being spicy. The food is an important aspect of the culture, social structure and popular traditions of Mexico. Here are some of the most popular Mexican food:</p>
-          </div>
-          <div class="col-md-5">
-            <img class="featurette-image img-fluid mx-auto" src="images/Burrito.jpg" data-src="holder.js/500x500/auto" alt="Burrito">
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-  
-  
+        
         <!-- Footer -->
         <footer>
           <p class="float-right"><a href="#">Back to top</a></p>
-          <p>&copy; 2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+          <p>&copy; 2018 TechMarket, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
         </footer>
   
     </div><!-- /.container -->
