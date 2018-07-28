@@ -1,35 +1,32 @@
 package com.techmark.techmarkwebsite.repositories;
 
-import com.techmark.techmarkwebsite.models.Category;
-import com.techmark.techmarkwebsite.models.Product;
-import org.hibernate.*;
+import com.techmark.techmarkwebsite.models.User;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Repository
-public class CategorySqlRepository implements CategoryRepository {
-
+public class UserSqlRepository implements GenericRepository {
     private SessionFactory factory;
 
     @Autowired
-    public CategorySqlRepository(SessionFactory factory) {
+    public UserSqlRepository(SessionFactory factory) {
         this.factory = factory;
     }
 
     @Override
-    public List<Product> getAllByCategoryId(int id) {
-        List<Product> products = new ArrayList<>();
+    public User getById(int id) {
+        User u = null;
         try(Session session = factory.openSession()){
             session.beginTransaction();
-            //products = session.get(Category.class,id).getProducts();
+            u = session.get(User.class,id);
             session.getTransaction().commit();
         }
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-        return products;
+        return u;
+
     }
 }
