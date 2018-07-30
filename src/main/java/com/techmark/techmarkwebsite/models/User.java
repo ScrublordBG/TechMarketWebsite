@@ -1,5 +1,7 @@
 package com.techmark.techmarkwebsite.models;
 
+import javax.persistence.*;
+
 public class User {
     private int userID;
     private String firstName;
