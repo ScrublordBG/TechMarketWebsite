@@ -19,14 +19,17 @@ h2 > a:hover {
 }
 
 /* Navbar */
-#bootstrap-override a.nav-link:hover{
-    color: red;
-    /*text-shadow: 2px 2px 4px green;*/
-}
-
 .dropdown-item:hover{
     color: red;
     font-weight: bold;
+}
+
+.fa.fa-shopping-cart {
+    font-size: 20px;
+}
+
+#bootstrap-override a.nav-link:hover{
+    color: red;
 }
 
 #bootstrap-override h1.navbar-brand {
@@ -37,19 +40,6 @@ h2 > a:hover {
     font-size: 150%;
     color: white;
     text-shadow: -1px 0 green, 0 1px green, 1px 0 green, 0 -1px green;
-}
-
-/* Rounded images */
-#bootstrap-override img.rounded-circle {
-    width: 140px;
-    height: 140px;
-    border: 2px solid #021a40;
-}
-
-#bootstrap-override img.rounded-circle:hover {
-    width: 160px;
-    height: 160px;
-    border: 5px double grey;
 }
 
 /* Modals */
@@ -73,7 +63,10 @@ input.form-control {
     text-align: center;
 }
 
-#whatsNew {
+
+/* What's new section */
+h4 {
+    color: grey;
     text-align: center;
 }
 
@@ -84,8 +77,17 @@ input.form-control {
     transition: transform .2s;
 }
 
-.fa.fa-shopping-cart {
-    font-size: 20px;
+#bootstrap-override img.figure-img.img-fluid.rounded.zoom:hover{
+    border: 1px solid gray;
+}
+
+/* Brand logos */
+div.col-sm {
+    text-align: center;
+}
+
+a.brands-02.brands-02-text {
+    text-align: center;
 }
 
 /* Media Query - Modal Subscribe */
