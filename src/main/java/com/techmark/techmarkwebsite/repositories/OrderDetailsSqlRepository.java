@@ -1,5 +1,6 @@
 package com.techmark.techmarkwebsite.repositories;
 
+import com.techmark.techmarkwebsite.models.OrderDetails;
 import com.techmark.techmarkwebsite.repositories.base.GenericRepository;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class OrderDetailsSqlRepository implements GenericRepository {
+public class OrderDetailsSqlRepository implements GenericRepository<OrderDetails> {
 	private SessionFactory factory;
 	
 	@Autowired
@@ -17,22 +18,22 @@ public class OrderDetailsSqlRepository implements GenericRepository {
 	}
 	
 	@Override
-	public void create(Object obj) {
+	public void create(OrderDetails obj) {
 	
 	}
 	
 	@Override
-	public Object getById(int id) {
+	public OrderDetails getById(int id) {
 		return null;
 	}
 	
 	@Override
-	public List getAll() {
+	public List<OrderDetails> getAll() {
 		return null;
 	}
 	
 	@Override
-	public void update(Object obj) {
+	public void update(OrderDetails obj) {
 	
 	}
 	
@@ -40,5 +41,4 @@ public class OrderDetailsSqlRepository implements GenericRepository {
 	public void delete(int id) {
 	
 	}
-	
 }

@@ -9,12 +9,17 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderDetailsService implements GenericService<OrderDetails> {
+public class OrderDetailsServiceImpl implements GenericService<OrderDetails> {
 	private GenericRepository<OrderDetails> repository;
 	
 	@Autowired
-	public OrderDetailsService(GenericRepository<OrderDetails> repository) {
+	public OrderDetailsServiceImpl(GenericRepository<OrderDetails> repository) {
 		this.repository = repository;
+	}
+	
+	@Override
+	public void create(OrderDetails orderDetails) {
+		repository.create(orderDetails);
 	}
 	
 	@Override
@@ -25,5 +30,15 @@ public class OrderDetailsService implements GenericService<OrderDetails> {
 	@Override
 	public List<OrderDetails> getAll() {
 		return repository.getAll();
+	}
+	
+	@Override
+	public void update(OrderDetails updateOrderDetails) {
+		repository.update(updateOrderDetails);
+	}
+	
+	@Override
+	public void delete(int id) {
+		repository.delete(id);
 	}
 }

@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -44,10 +45,10 @@ public class OrderSqlRepository implements GenericRepository<Order> {
 	
 	@Override
 	public List<Order> getAll() {
-		List<Order> orders = null;
+		List<Order> orders = new ArrayList<>();
 		try (Session session = factory.openSession()) {
-			session.getTransaction();
-			orders = session.createQuery("from Order", Order.class).list();
+			session.beginTransaction();
+			orders = session.createQuery("from Order").list();
 			session.getTransaction().commit();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());

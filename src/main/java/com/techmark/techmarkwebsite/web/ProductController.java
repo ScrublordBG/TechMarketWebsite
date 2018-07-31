@@ -4,10 +4,7 @@ import com.techmark.techmarkwebsite.models.Product;
 import com.techmark.techmarkwebsite.services.ProductServiceImpl;
 import com.techmark.techmarkwebsite.services.base.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,14 @@ public class ProductController {
     @GetMapping("/")
     public List<Product> getAll(){
         return service.getAll();
+    }
+    
+    /*Doesn't work - CategoryID is the problem*/
+    @RequestMapping(
+        value = "/",
+        method = RequestMethod.POST
+    )
+    public void createProduct(@RequestBody Product product) {
+        service.create(product);
     }
 }

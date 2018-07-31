@@ -17,6 +17,11 @@ public class UserServiceImpl implements GenericService<User> {
 	public UserServiceImpl(GenericRepository<User> repository) { this.repository = repository;	}
 	
 	@Override
+	public void create(User user) {
+		repository.create(user);
+	}
+	
+	@Override
 	public User getById(int id) {
 		return repository.getById(id);
 	}
@@ -24,5 +29,15 @@ public class UserServiceImpl implements GenericService<User> {
 	@Override
 	public List getAll() {
 		return repository.getAll();
+	}
+	
+	@Override
+	public void update(User updateUser) {
+		repository.update(updateUser);
+	}
+	
+	@Override
+	public void delete(int id) {
+		repository.delete(id);
 	}
 }
