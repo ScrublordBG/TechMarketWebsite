@@ -18,6 +18,17 @@ public class UserSqlRepository implements GenericRepository<User> {
 	public UserSqlRepository(SessionFactory factory) {this.factory = factory;}
 	
 	@Override
+	public void create(User user) {
+		try(Session session = factory.openSession()) {
+			session.beginTransaction();
+			session.save(user);
+			session.getTransaction().commit();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
+	@Override
 	public User getById(int userId) {
 		User user = null;
 		try(Session session = factory.openSession()) {
@@ -41,5 +52,28 @@ public class UserSqlRepository implements GenericRepository<User> {
 			System.out.println(ex.getMessage());
 		}
 		return users;
+	}
+	
+	@Override
+	public void update(User updateUser) {
+		try (Session session = factory.openSession()) {
+			session.beginTransaction();
+			session.update(updateUser);
+			session.getTransaction().commit();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
+	@Override
+	public void delete(int id) {
+		User user = getById(id);
+		try (Session session = factory.openSession()){
+			session.beginTransaction();
+			session.delete(user);
+			session.getTransaction().commit();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 }

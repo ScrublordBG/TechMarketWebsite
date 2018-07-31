@@ -1,5 +1,7 @@
 package com.techmark.techmarkwebsite.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ public class Order {
     @Column(name = "OrderID")
     private int orderID;
     
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserID")
     private User userID;

@@ -19,6 +19,17 @@ public class OrderSqlRepository implements GenericRepository<Order> {
 	}
 	
 	@Override
+	public void create(Order order) {
+		try(Session session = factory.openSession()) {
+			session.beginTransaction();
+			session.save(order);
+			session.getTransaction().commit();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
+	@Override
 	public Order getById(int id) {
 		Order order = null;
 		try(Session session = factory.openSession()) {
@@ -42,5 +53,28 @@ public class OrderSqlRepository implements GenericRepository<Order> {
 			System.out.println(ex.getMessage());
 		}
 		return orders;
+	}
+	
+	@Override
+	public void update(Order updateOrder) {
+		try (Session session = factory.openSession()) {
+			session.beginTransaction();
+			session.update(updateOrder);
+			session.getTransaction().commit();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+	}
+	
+	@Override
+	public void delete(int id) {
+		Order order = getById(id);
+		try (Session session = factory.openSession()){
+			session.beginTransaction();
+			session.delete(order);
+			session.getTransaction().commit();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
 	}
 }
