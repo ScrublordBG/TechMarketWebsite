@@ -1,9 +1,6 @@
 package com.techmark.techmarkwebsite;
 
-import com.techmark.techmarkwebsite.models.Category;
-import com.techmark.techmarkwebsite.models.Order;
-import com.techmark.techmarkwebsite.models.Product;
-import com.techmark.techmarkwebsite.models.User;
+import com.techmark.techmarkwebsite.models.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.boot.SpringApplication;
@@ -31,6 +28,7 @@ public class TechmarkwebsiteApplication {
                 .addAnnotatedClass(Product.class)
                 .addAnnotatedClass(User.class)
                 .addAnnotatedClass(Order.class)
+                .addAnnotatedClass(OrderDetails.class)
                 .buildSessionFactory();
 
     }
