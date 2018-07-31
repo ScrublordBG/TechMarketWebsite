@@ -1,6 +1,5 @@
 package com.techmark.techmarkwebsite.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.techmark.techmarkwebsite.serializers.ProductSerializer;
 
