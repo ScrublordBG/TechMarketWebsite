@@ -1,6 +1,7 @@
 package com.techmark.techmarkwebsite;
 
 import com.techmark.techmarkwebsite.models.Category;
+import com.techmark.techmarkwebsite.models.Order;
 import com.techmark.techmarkwebsite.models.Product;
 import com.techmark.techmarkwebsite.models.User;
 import org.hibernate.Session;
@@ -29,6 +30,7 @@ public class TechmarkwebsiteApplication {
                 .addAnnotatedClass(Category.class)
                 .addAnnotatedClass(Product.class)
                 .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Order.class)
                 .buildSessionFactory();
 
     }
