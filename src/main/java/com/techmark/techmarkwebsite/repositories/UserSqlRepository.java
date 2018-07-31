@@ -11,34 +11,34 @@ import java.util.List;
 
 @Repository
 public class UserSqlRepository implements UserRepository {
-    private SessionFactory factory;
-    
-    @Autowired
-    public UserSqlRepository(SessionFactory factory) {this.factory = factory;}
-    
-    @Override
-    public User getById(int userId) {
-        User user = null;
-        try(Session session = factory.openSession()) {
-            session.beginTransaction();
-            user = session.get(User.class, userId);
-            session.getTransaction().commit();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return user;
-    }
-    
-    @Override
-    public List<User> getAll() {
-        List<User> users = new ArrayList<>();
-        try (Session session = factory.openSession()) {
-            session.beginTransaction();
-            users = session.createQuery("from User").list();
-            session.getTransaction().commit();
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-        return users;
-    }
+	private SessionFactory factory;
+	
+	@Autowired
+	public UserSqlRepository(SessionFactory factory) {this.factory = factory;}
+	
+	@Override
+	public User getById(int userId) {
+		User user = null;
+		try(Session session = factory.openSession()) {
+			session.beginTransaction();
+			user = session.get(User.class, userId);
+			session.getTransaction().commit();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return user;
+	}
+	
+	@Override
+	public List<User> getAll() {
+		List<User> users = new ArrayList<>();
+		try (Session session = factory.openSession()) {
+			session.beginTransaction();
+			users = session.createQuery("from User").list();
+			session.getTransaction().commit();
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
+		}
+		return users;
+	}
 }
