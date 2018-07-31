@@ -1,6 +1,9 @@
 package com.techmark.techmarkwebsite.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +24,10 @@ public class User {
     
     @Column(name = "Password")
     private String password;
+    
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "userID",cascade = CascadeType.ALL)
+    private List<Order> orders;
     
     public User() {
     
@@ -74,4 +81,11 @@ public class User {
         this.password = password;
     }
     
+    public List<Order> getOrders() {
+        return orders;
+    }
+    
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 }

@@ -11,8 +11,9 @@ public class Order {
     @Column(name = "OrderID")
     private int orderID;
     
-    @Column(name = "UserID")
-    private int userID;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "UserID")
+    private User userID;
     
     @Column(name = "OrderDate")
     private Date date;
@@ -20,7 +21,7 @@ public class Order {
     public Order() {
     }
 
-    public Order(int orderID, int userID, Date date) {
+    public Order(int orderID, User userID, Date date) {
         this.orderID = orderID;
         this.userID = userID;
         this.date = date;
@@ -34,11 +35,11 @@ public class Order {
         this.orderID = orderID;
     }
 
-    public int getUserID() {
+    public User getUserID() {
         return userID;
     }
 
-    public void setUserID(int userID) {
+    public void setUserID(User userID) {
         this.userID = userID;
     }
 

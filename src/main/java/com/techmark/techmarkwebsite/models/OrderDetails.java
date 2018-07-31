@@ -1,8 +1,16 @@
 package com.techmark.techmarkwebsite.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//@Entity
+//@Table(name = "order details")
 public class OrderDetails {
-    private int productID;
+    
     private int orderID;
+    private int productID;
     private int productPrice;
     private int quantity;
 
