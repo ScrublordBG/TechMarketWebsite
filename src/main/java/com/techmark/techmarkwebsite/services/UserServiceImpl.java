@@ -1,18 +1,20 @@
 package com.techmark.techmarkwebsite.services;
 
 import com.techmark.techmarkwebsite.models.User;
-import com.techmark.techmarkwebsite.repositories.UserRepository;
+import com.techmark.techmarkwebsite.repositories.UserSqlRepository;
+import com.techmark.techmarkwebsite.repositories.base.GenericRepository;
+import com.techmark.techmarkwebsite.services.base.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService{
-	private UserRepository repository;
+public class UserServiceImpl implements GenericService<User> {
+	private GenericRepository<User> repository;
 	
 	@Autowired
-	public UserServiceImpl(UserRepository repository) { this.repository = repository;	}
+	public UserServiceImpl(GenericRepository<User> repository) { this.repository = repository;	}
 	
 	@Override
 	public User getById(int id) {

@@ -1,13 +1,17 @@
 package com.techmark.techmarkwebsite.repositories;
 
 import com.techmark.techmarkwebsite.models.Product;
+import com.techmark.techmarkwebsite.repositories.base.GenericRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
-public class ProductSqlRepository implements GenericRepository {
+public class ProductSqlRepository implements GenericRepository<Product> {
     private SessionFactory factory;
 
     @Autowired
@@ -29,5 +33,18 @@ public class ProductSqlRepository implements GenericRepository {
         }
 
         return p;
+    }
+    
+    @Override
+    public List<Product> getAll() {
+        List<Product> products = new ArrayList<>();
+        try (Session session = factory.openSession()) {
+            session.beginTransaction();
+            products = session.createQuery("from Product").list();
+            session.getTransaction().commit();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return products;
     }
 }

@@ -1,4 +1,4 @@
-package com.techmark.techmarkwebsite.repositories;
+package com.techmark.techmarkwebsite.repositories.base;
 
 import com.techmark.techmarkwebsite.models.Product;
 

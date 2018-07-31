@@ -1,6 +1,7 @@
 package com.techmark.techmarkwebsite.repositories;
 
 import com.techmark.techmarkwebsite.models.User;
+import com.techmark.techmarkwebsite.repositories.base.GenericRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class UserSqlRepository implements UserRepository {
+public class UserSqlRepository implements GenericRepository<User> {
 	private SessionFactory factory;
 	
 	@Autowired
