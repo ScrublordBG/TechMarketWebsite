@@ -45,7 +45,7 @@ public class UserController {
 	
 	/*works (logic moved to the service layer)*/
 	@PutMapping("/updateUser/{id}")
-	public void updateWallet(
+	public void updateUser(
 		@PathVariable("id") String userIdString,
 		@RequestParam(value = "firstName", required = false) String firstName,
 		@RequestParam(value = "lastName", required = false) String lastName,

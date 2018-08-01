@@ -1,7 +1,7 @@
 package com.techmark.techmarkwebsite.web;
 
+import com.techmark.techmarkwebsite.models.Category;
 import com.techmark.techmarkwebsite.models.Product;
-import com.techmark.techmarkwebsite.services.ProductServiceImpl;
 import com.techmark.techmarkwebsite.services.base.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,22 +37,45 @@ public class ProductController {
         service.create(product);
     }
     
-    /*doesn't works due to Category interrelation*/
-    @RequestMapping(
-        value = "/{id}",
-        method = RequestMethod.PUT
-    )
-    public void updateProduct(@PathVariable("id") String productIdString, @RequestBody Product updateProduct) {
-        int productId = Integer.parseInt(productIdString);
-        service.update(productId, updateProduct);
+    @PostMapping("/addProduct")
+    public void createProduct(
+        @RequestParam(value = "name", required = false) String name,
+        @RequestParam(value = "price", required = false) String priceString,
+        @RequestParam(value = "description", required = false) String description,
+        @RequestParam(value = "imageUrl", required = false) String imageUrl,
+        @RequestParam(value = "categoryId", required = false) String categoryIdString,
+        @RequestParam(value = "categoryName", required = false) String categoryName) {
+        int price = Integer.parseInt(priceString);
+        int categoryId = Integer.parseInt(categoryIdString);
+        Category category = new Category(categoryId, categoryName);
+        Product newProduct = new Product(name, price, description, imageUrl, category);
+        service.create(newProduct);
     }
     
-    /*doesn't work*/
-    @RequestMapping(
-        value = "/",
-        method = RequestMethod.DELETE
-    )
-    public void deleteProduct(int productId) {
+    /*works*/
+    @PutMapping("/updateProduct/{id}")
+    public void updateProduct(
+      @PathVariable("id") String productIdString,
+      @RequestParam(value = "name", required = false) String name,
+      @RequestParam(value = "price", required = false) String priceString,
+      @RequestParam(value = "description", required = false) String description,
+      @RequestParam(value = "imageUrl", required = false) String imageUrl,
+      @RequestParam(value = "categoryId", required = false) String categoryIdString,
+      @RequestParam(value = "categoryName", required = false) String categoryName
+    ){
+        int productId = Integer.parseInt(productIdString);
+        int price = Integer.parseInt(priceString);
+        int categoryId = Integer.parseInt(categoryIdString);
+        Category category = new Category(categoryId, categoryName);
+        Product updatedProduct = new Product(productId, name, price, description, imageUrl, category);
+        service.update(productId, updatedProduct);
+    }
+    
+    /*works*/
+    @DeleteMapping("/deleteProduct/{id}")
+    public void deleteUser(@PathVariable("id") String productIdString) {
+        int productId = Integer.parseInt(productIdString);
         service.delete(productId);
     }
+    
 }

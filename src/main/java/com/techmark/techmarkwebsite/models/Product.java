@@ -41,6 +41,14 @@ public class Product {
         this.imageURL = imageURL;
         this.category = category;
     }
+    
+    public Product(String name, int price, String description, String imageURL, Category category) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.imageURL = imageURL;
+        this.category = category;
+    }
 
     public int getProductID() {
         return productID;
