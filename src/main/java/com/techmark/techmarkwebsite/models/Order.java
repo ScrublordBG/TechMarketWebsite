@@ -16,10 +16,10 @@ public class Order {
     
     // Problem: @JsonIgnore makes so that this property (and column) - UserID - is missing from
 		// json response when we want to view order(s)
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserID")
-		//@JsonManagedReference
+		@JsonManagedReference
     private User userID;
     
     @Column(name = "OrderDate")

@@ -31,8 +31,25 @@ public class UserServiceImpl implements GenericService<User> {
 	}
 	
 	@Override
-	public void update(int id, User updateUser) {
-		repository.update(id, updateUser);
+	public void update(int oldUserId, User updatedUser) {
+		User oldUser = repository.getById(oldUserId);
+		if(updatedUser.getFirstName() == null){
+			updatedUser.setFirstName(oldUser.getFirstName());
+		}
+		
+		if(updatedUser.getLastName() == null){
+			updatedUser.setLastName(oldUser.getLastName());
+		}
+		
+		if(updatedUser.getUsername() == null){
+			updatedUser.setUsername(oldUser.getUsername());
+		}
+		
+		if(updatedUser.getPassword() == null){
+			updatedUser.setPassword(oldUser.getPassword());
+		}
+		
+		repository.update(oldUserId, updatedUser);
 	}
 	
 	@Override
