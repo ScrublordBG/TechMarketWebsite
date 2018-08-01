@@ -33,8 +33,8 @@ public class UserController {
 			@RequestParam("lastName") String lastName,
 			@RequestParam("username") String username,
 			@RequestParam("password") String password) {
-		User newUser = new User(firstName, lastName, username, password);
-		service.create(newUser);
+				User newUser = new User(firstName, lastName, username, password);
+				service.create(newUser);
 	}
 	
 	/*works (alternative appoach, but can't create user via url)*/
