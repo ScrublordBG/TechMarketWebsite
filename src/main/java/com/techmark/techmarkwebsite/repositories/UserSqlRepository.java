@@ -55,10 +55,16 @@ public class UserSqlRepository implements GenericRepository<User> {
 	}
 	
 	@Override
-	public void update(User updateUser) {
+	public void update(int userId, User updateUser) {
 		try (Session session = factory.openSession()) {
 			session.beginTransaction();
-			session.update(updateUser);
+			User user = session.get(User.class, userId);
+			user.setFirstName(updateUser.getFirstName());
+			user.setLastName(updateUser.getLastName());
+			user.setUsername(updateUser.getUsername());
+			user.setPassword(updateUser.getPassword());
+			//updateUser.setUserId(user.getUserId());
+			//session.update(updateUser);
 			session.getTransaction().commit();
 		} catch (Exception ex) {
 			System.out.println(ex.getMessage());
@@ -66,8 +72,8 @@ public class UserSqlRepository implements GenericRepository<User> {
 	}
 	
 	@Override
-	public void delete(int id) {
-		User user = getById(id);
+	public void delete(int userId) {
+		User user = getById(userId);
 		try (Session session = factory.openSession()){
 			session.beginTransaction();
 			session.delete(user);

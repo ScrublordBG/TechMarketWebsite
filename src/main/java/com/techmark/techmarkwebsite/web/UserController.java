@@ -34,22 +34,22 @@ public class UserController {
 	public void createUser(@RequestBody User user) {
 		service.create(user);
 	}
-	/*doesn't work - maybe it's due to id not being part of update method of service class*/
+	/*works*/
 	@RequestMapping(
 			value = "/{id}",
 			method = RequestMethod.PUT
 	)
 	public void updateUser(@PathVariable("id") String idString, @RequestBody User updateUser) {
 		int id = Integer.parseInt(idString);
-		service.update(updateUser);
+		service.update(id, updateUser);
 	}
 	/*doesn't work*/
 	@RequestMapping(
 			value = "/",
 			method = RequestMethod.DELETE
 	)
-	public void deleteUser(int id) {
-		service.delete(id);
+	public void deleteUser(int userId) {
+		service.delete(userId);
 	}
 	
 }

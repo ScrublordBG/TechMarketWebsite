@@ -33,7 +33,7 @@ public class OrderDetailsSqlRepository implements GenericRepository<OrderDetails
 	}
 	
 	@Override
-	public void update(OrderDetails obj) {
+	public void update(int id, OrderDetails obj) {
 	
 	}
 	

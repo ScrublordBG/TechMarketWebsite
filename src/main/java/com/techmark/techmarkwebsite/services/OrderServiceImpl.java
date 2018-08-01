@@ -34,8 +34,8 @@ public class OrderServiceImpl implements GenericService<Order> {
 	}
 	
 	@Override
-	public void update(Order updateOrder) {
-		repository.update(updateOrder);
+	public void update(int id, Order updateOrder) {
+		repository.update(id, updateOrder);
 	}
 	
 	@Override

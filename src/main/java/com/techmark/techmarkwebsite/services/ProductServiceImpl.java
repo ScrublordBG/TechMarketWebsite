@@ -33,8 +33,8 @@ public class ProductServiceImpl implements GenericService<Product> {
     }
     
     @Override
-    public void update(Product updateProduct) {
-        repository.update(updateProduct);
+    public void update(int id, Product updateProduct) {
+        repository.update(id, updateProduct);
     }
     
     @Override

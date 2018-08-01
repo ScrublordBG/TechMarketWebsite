@@ -31,18 +31,18 @@ public class ProductSqlRepository implements GenericRepository<Product> {
     }
     
     @Override
-    public Product getById(int id) {
-        Product p = null;
+    public Product getById(int productId) {
+        Product product = null;
         try(Session session = factory.openSession()){
             session.beginTransaction();
-            p = session.get(Product.class,id);
+            product = session.get(Product.class,productId);
             session.getTransaction().commit();
         }
         catch (Exception e){
             System.out.println(e.getMessage());
         }
 
-        return p;
+        return product;
     }
     
     @Override
@@ -59,10 +59,15 @@ public class ProductSqlRepository implements GenericRepository<Product> {
     }
     
     @Override
-    public void update(Product updateProduct) {
+    public void update(int productId, Product updateProduct) {
         try (Session session = factory.openSession()) {
             session.beginTransaction();
-            session.update(updateProduct);
+            Product product = session.get(Product.class, productId);
+            product.setName(updateProduct.getName());
+            product.setPrice(updateProduct.getPrice());
+            product.setDescription(updateProduct.getDescription());
+            product.setImageURL(updateProduct.getImageURL());
+            product.setCategory(updateProduct.getCategory());
             session.getTransaction().commit();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -70,8 +75,8 @@ public class ProductSqlRepository implements GenericRepository<Product> {
     }
     
     @Override
-    public void delete(int id) {
-        Product product = getById(id);
+    public void delete(int productId) {
+        Product product = getById(productId);
         try (Session session = factory.openSession()){
             session.beginTransaction();
             session.delete(product);

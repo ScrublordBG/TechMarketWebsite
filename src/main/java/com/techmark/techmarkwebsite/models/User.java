@@ -1,5 +1,6 @@
 package com.techmark.techmarkwebsite.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -25,8 +26,9 @@ public class User {
     @Column(name = "Password")
     private String password;
     
-    @JsonIgnore
+    //@JsonIgnore
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "userID",cascade = CascadeType.ALL)
+    @JsonBackReference
     private List<Order> orders;
     
     public User() {

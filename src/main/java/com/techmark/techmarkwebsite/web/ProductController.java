@@ -36,4 +36,14 @@ public class ProductController {
     public void createProduct(@RequestBody Product product) {
         service.create(product);
     }
+    
+    /*doesn't works due to Category interrelation*/
+    @RequestMapping(
+        value = "/{id}",
+        method = RequestMethod.PUT
+    )
+    public void updateUser(@PathVariable("id") String productIdString, @RequestBody Product updateProduct) {
+        int productId = Integer.parseInt(productIdString);
+        service.update(productId, updateProduct);
+    }
 }
