@@ -27,4 +27,31 @@ public class OrderController {
 	public List<Order> getAll() {
 		return service.getAll();
 	}
+	
+	/*works!*/
+	@RequestMapping(
+			value = "/",
+			method = RequestMethod.POST
+	)
+	public void createOrder(@RequestBody Order order) {
+		service.create(order);
+	}
+	/*works*/
+	@RequestMapping(
+			value = "/{id}",
+			method = RequestMethod.PUT
+	)
+	public void updateOrder(@PathVariable("id") String orderIdString, @RequestBody Order updateOrder) {
+		int orderId = Integer.parseInt(orderIdString);
+		service.update(orderId, updateOrder);
+	}
+	/*doesn't work*/
+	@RequestMapping(
+			value = "/",
+			method = RequestMethod.DELETE
+	)
+	public void deleteOrder(int orderId) {
+		service.delete(orderId);
+	}
+	
 }

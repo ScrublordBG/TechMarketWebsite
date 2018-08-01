@@ -42,8 +42,17 @@ public class ProductController {
         value = "/{id}",
         method = RequestMethod.PUT
     )
-    public void updateUser(@PathVariable("id") String productIdString, @RequestBody Product updateProduct) {
+    public void updateProduct(@PathVariable("id") String productIdString, @RequestBody Product updateProduct) {
         int productId = Integer.parseInt(productIdString);
         service.update(productId, updateProduct);
+    }
+    
+    /*doesn't work*/
+    @RequestMapping(
+        value = "/",
+        method = RequestMethod.DELETE
+    )
+    public void deleteProduct(int productId) {
+        service.delete(productId);
     }
 }

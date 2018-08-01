@@ -14,6 +14,8 @@ public class Order {
     @Column(name = "OrderID")
     private int orderID;
     
+    // Problem: @JsonIgnore makes so that this property (and column) - UserID - is missing from
+		// json response when we want to view order(s)
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserID")
