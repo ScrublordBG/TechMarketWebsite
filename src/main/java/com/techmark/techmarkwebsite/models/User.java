@@ -26,8 +26,8 @@ public class User {
     @Column(name = "Password")
     private String password;
     
-    //@JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "userID",cascade = CascadeType.ALL)
+    //Note: Without @JsonIgnore or @JsonBackReference we will get the json info coming from the mapped class (i.e., Order class and all related to the given user orders will be visualized within the json of the User class); Here, using @JsonIgnore or @JsonBackReference we will not show any info from the json of the Ordere class and no related info about the orders of the given user will be visualized within the user's json
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user",cascade = CascadeType.ALL)
     @JsonBackReference
     private List<Order> orders;
     
@@ -48,6 +48,10 @@ public class User {
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+    }
+    
+    public User(int userId) {
+        this.userId = userId;
     }
     
     public int getUserId() {

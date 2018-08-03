@@ -1,55 +1,64 @@
 package com.techmark.techmarkwebsite.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.techmark.techmarkwebsite.serializers.JsonDateSerializer;
+import com.techmark.techmarkwebsite.serializers.OrderSerializer;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "orders")
+@JsonSerialize(using = OrderSerializer.class)
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OrderID")
-    private int orderID;
+    private int orderId;
     
-    // Problem: @JsonIgnore makes so that this property (and column) - UserID - is missing from
-		// json response when we want to view order(s)
-    //@JsonIgnore
+    // @JsonIgnore makes so that info coming from related object (here, User) is not transferred and visualized within the json response when we want to view order(s). In other words, ignores info coming from other mapped classes (here - User class). Could be also managed using @JsonManagedReference and in the case of mappedBy - using @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserID")
 		@JsonManagedReference
-    private User userID;
+    private User user;
     
     @Column(name = "OrderDate")
     private Date date;
-
+    
     public Order() {
-    }
+    
+		}
 
-    public Order(int orderID, User userID, Date date) {
-        this.orderID = orderID;
-        this.userID = userID;
+    public Order(int orderId, User user, Date date) {
+        this.orderId = orderId;
+        this.user = user;
         this.date = date;
     }
+	
+	public Order(User user, Date date) {
+		this.user = user;
+		this.date = date;
+	}
 
-    public int getOrderID() {
-        return orderID;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
-    public User getUserID() {
-        return userID;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserID(User userID) {
-        this.userID = userID;
+    public void setUser(User user) {
+        this.user = user;
     }
-
+	
+    /*formats date to as specifically defined date format*/
+		@JsonSerialize(using= JsonDateSerializer.class)
     public Date getDate() {
         return date;
     }

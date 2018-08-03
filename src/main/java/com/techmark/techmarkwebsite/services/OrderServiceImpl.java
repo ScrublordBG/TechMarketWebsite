@@ -3,7 +3,6 @@ package com.techmark.techmarkwebsite.services;
 import com.techmark.techmarkwebsite.models.Order;
 import com.techmark.techmarkwebsite.repositories.base.GenericRepository;
 import com.techmark.techmarkwebsite.services.base.GenericService;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,8 +33,17 @@ public class OrderServiceImpl implements GenericService<Order> {
 	}
 	
 	@Override
-	public void update(int id, Order updateOrder) {
-		repository.update(id, updateOrder);
+	public void update(int oldOrderId, Order updatedOrder) {
+		Order oldOrder = repository.getById(oldOrderId);
+		if(updatedOrder.getUser() == null){
+			updatedOrder.setUser(oldOrder.getUser());
+		}
+		
+		if(updatedOrder.getDate() == null){
+			updatedOrder.setDate(oldOrder.getDate());
+		}
+		
+		repository.update(oldOrderId, updatedOrder);
 	}
 	
 	@Override

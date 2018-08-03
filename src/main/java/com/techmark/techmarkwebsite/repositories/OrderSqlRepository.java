@@ -61,7 +61,7 @@ public class OrderSqlRepository implements GenericRepository<Order> {
 		try (Session session = factory.openSession()) {
 			session.beginTransaction();
 			Order order = session.get(Order.class, orderId);
-			order.setUserID(updateOrder.getUserID());
+			order.setUser(updateOrder.getUser());
 			order.setDate(updateOrder.getDate());
 			session.getTransaction().commit();
 		} catch (Exception ex) {

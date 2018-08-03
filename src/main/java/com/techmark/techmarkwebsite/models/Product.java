@@ -1,5 +1,6 @@
 package com.techmark.techmarkwebsite.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.techmark.techmarkwebsite.serializers.ProductSerializer;
 
@@ -25,9 +26,10 @@ public class Product {
 
     @Column(name = "ImageURL")
     private String imageURL;
-
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CategoryID")
+		@JsonManagedReference
     private Category category;
 
     public Product() {

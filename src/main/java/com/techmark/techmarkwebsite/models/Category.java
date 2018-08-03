@@ -1,5 +1,7 @@
 package com.techmark.techmarkwebsite.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
+    @JsonBackReference
     private List<Product> products;
 
     public Category(){
