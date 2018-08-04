@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `order details` (
   `Quantity` int(11) NOT NULL,
   PRIMARY KEY (`ProductID`,`OrderID`),
   KEY `FK_order details_orders` (`OrderID`),
-  CONSTRAINT `FK_order details_orders` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`),
-  CONSTRAINT `FK_order details_products` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`)
+  CONSTRAINT `FK_order details_orders` FOREIGN KEY (`OrderID`) REFERENCES `orders` (`OrderID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_order details_products` FOREIGN KEY (`ProductID`) REFERENCES `products` (`ProductID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- Dumping data for table marketwebsite.order details: ~4 rows (approximately)
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `OrderDate` date NOT NULL,
   PRIMARY KEY (`OrderID`),
   KEY `FK_orders_users` (`UserID`),
-  CONSTRAINT `FK_orders_users` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`)
+  CONSTRAINT `FK_orders_users` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table marketwebsite.orders: ~3 rows (approximately)
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `CategoryID` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ProductID`),
   KEY `CategoryID` (`CategoryID`),
-  CONSTRAINT `FK_products_categories` FOREIGN KEY (`CategoryID`) REFERENCES `categories` (`CategoryID`)
+  CONSTRAINT `FK_products_categories` FOREIGN KEY (`CategoryID`) REFERENCES `categories` (`CategoryID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table marketwebsite.products: ~7 rows (approximately)
