@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CategorySqlRepository implements CategoryRepository, GenericRepository<Category> {
+public class CategorySqlRepository implements CategoryRepository {
 
     private SessionFactory factory;
 

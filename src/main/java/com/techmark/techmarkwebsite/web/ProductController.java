@@ -28,15 +28,7 @@ public class ProductController {
         return service.getAll();
     }
     
-    /*Doesn't work - CategoryID is the problem*/
-    @RequestMapping(
-        value = "/",
-        method = RequestMethod.POST
-    )
-    public void createProduct(@RequestBody Product product) {
-        service.create(product);
-    }
-    
+    /*works*/
     @PostMapping("/addProduct")
     public void createProduct(
         @RequestParam(value = "name", required = false) String name,
@@ -73,9 +65,8 @@ public class ProductController {
     
     /*works*/
     @DeleteMapping("/deleteProduct/{id}")
-    public void deleteUser(@PathVariable("id") String productIdString) {
+    public void deleteProduct(@PathVariable("id") String productIdString) {
         int productId = Integer.parseInt(productIdString);
         service.delete(productId);
     }
-    
 }

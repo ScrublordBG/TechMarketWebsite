@@ -16,7 +16,10 @@ public class Category {
     @Column(name = "Name")
     private String name;
 
-    @OneToMany(mappedBy = "category",fetch = FetchType.EAGER)
+    @OneToMany(
+    		//cascade = {CascadeType.DETACH, CascadeType.MERGE},
+    		mappedBy = "category",
+				fetch = FetchType.EAGER) /*keep fetch type EAGER if you want getAllProductsByCategory() to work*/
     @JsonBackReference
     private List<Product> products;
 
@@ -28,8 +31,12 @@ public class Category {
         this.categoryID = categoryID;
         this.name = name;
     }
-
-    public int getCategoryID() {
+	
+	public Category(String name) {
+    	this.name = name;
+	}
+	
+	public int getCategoryID() {
         return categoryID;
     }
 
