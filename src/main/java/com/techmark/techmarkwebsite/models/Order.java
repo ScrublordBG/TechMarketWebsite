@@ -7,6 +7,7 @@ import com.techmark.techmarkwebsite.serializers.OrderSerializer;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -22,6 +23,9 @@ public class Order {
     @JoinColumn(name = "UserID")
 		@JsonManagedReference
     private User user;
+    
+    @OneToMany(mappedBy = "order")
+		private List<OrderDetails> orderDetails;
     
     @Column(name = "OrderDate")
     private Date date;
@@ -66,4 +70,12 @@ public class Order {
     public void setDate(Date date) {
         this.date = date;
     }
+	
+	public List<OrderDetails> getOrderDetails() {
+		return orderDetails;
+	}
+	
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
 }

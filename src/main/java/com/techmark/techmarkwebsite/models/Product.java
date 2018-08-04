@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.techmark.techmarkwebsite.serializers.ProductSerializer;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -13,7 +14,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ProductID")
-    private int productID;
+    private int productId;
 
     @Column(name = "Name")
     private String name;
@@ -31,12 +32,15 @@ public class Product {
     @JoinColumn(name = "CategoryID")
 		@JsonManagedReference
     private Category category;
-
+	
+		@OneToMany(mappedBy = "product")
+		private List<OrderDetails> orderDetails;
+	
     public Product() {
     }
 
-    public Product(int productID, String name, int price, String description, String imageURL, Category category) {
-        this.productID = productID;
+    public Product(int productId, String name, int price, String description, String imageURL, Category category) {
+        this.productId = productId;
         this.name = name;
         this.price = price;
         this.description = description;
@@ -52,12 +56,12 @@ public class Product {
         this.category = category;
     }
 
-    public int getProductID() {
-        return productID;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setProductID(int productID) {
-        this.productID = productID;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -99,4 +103,12 @@ public class Product {
     public void setCategory(Category category) {
         this.category = category;
     }
+	
+	public List<OrderDetails> getOrderDetails() {
+		return orderDetails;
+	}
+	
+	public void setOrderDetails(List<OrderDetails> orderDetails) {
+		this.orderDetails = orderDetails;
+	}
 }

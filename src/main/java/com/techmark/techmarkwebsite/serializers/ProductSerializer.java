@@ -21,7 +21,7 @@ public class ProductSerializer extends StdSerializer<Product> {
     public void serialize(Product value, JsonGenerator gen, SerializerProvider provider) throws IOException {
 
         gen.writeStartObject();
-        gen.writeNumberField("id",value.getProductID());
+        gen.writeNumberField("id",value.getProductId());
         gen.writeStringField("name", value.getName());
         gen.writeNumberField("price",value.getPrice());
         gen.writeStringField("description",value.getDescription());

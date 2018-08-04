@@ -1,45 +1,59 @@
 package com.techmark.techmarkwebsite.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.techmark.techmarkwebsite.models.Embeddables.OrderDetailsId;
 
-//@Entity
-//@Table(name = "order details")
+import javax.persistence.*;
+
+@Entity
+@Table(name = "order details")
 public class OrderDetails {
     
-    private int orderID;
-    private int productID;
+    @EmbeddedId
+    protected OrderDetailsId orderDetailsId;
+    
+    @ManyToOne
+    @JoinColumn(
+        name = "OrderID",
+        insertable = false,
+        updatable = false
+    )
+    protected Order order;
+    
+    @ManyToOne
+    @JoinColumn(
+        name = "ProductID",
+        insertable = false,
+        updatable = false
+    )
+    protected Product product;
+    
+    @Column(name = "ProductPrice")
     private int productPrice;
+    
+    @Column(name = "Quantity")
     private int quantity;
 
     public OrderDetails() {
     }
 
-    public OrderDetails(int productID, int orderID, int productPrice, int quantity) {
-        this.productID = productID;
-        this.orderID = orderID;
+    /*public OrderDetails(OrderDetailsId id) {
+        this.orderDetailsId = id;
+    }*/
+    
+    public OrderDetails(OrderDetailsId id, int productPrice, int quantity) {
+        this.orderDetailsId = id;
         this.productPrice = productPrice;
         this.quantity = quantity;
     }
-
-    public int getProductID() {
-        return productID;
+    
+    public OrderDetailsId getOrderDetailsId() {
+        return orderDetailsId;
     }
-
-    public void setProductID(int productID) {
-        this.productID = productID;
+    
+    public void setOrderDetailsId(OrderDetailsId orderDetailsId) {
+        this.orderDetailsId = orderDetailsId;
     }
-
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
-    }
-
+    
     public int getProductPrice() {
         return productPrice;
     }

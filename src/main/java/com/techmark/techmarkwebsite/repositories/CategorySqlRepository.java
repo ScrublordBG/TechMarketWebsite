@@ -3,7 +3,6 @@ package com.techmark.techmarkwebsite.repositories;
 import com.techmark.techmarkwebsite.models.Category;
 import com.techmark.techmarkwebsite.models.Product;
 import com.techmark.techmarkwebsite.repositories.base.CategoryRepository;
-import com.techmark.techmarkwebsite.repositories.base.GenericRepository;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
