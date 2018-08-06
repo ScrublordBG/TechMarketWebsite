@@ -5,18 +5,8 @@ import com.techmark.techmarkwebsite.models.Product;
 
 import java.util.List;
 
-public interface CategoryRepository {
+public interface CategoryRepository extends GenericRepository<Category> {
     
     List<Product> getAllByCategoryId(int id);
-    
-    void create(Category category);
-    
-    Category getById(int id);
-    
-    List<Category> getAll();
-    
-    void update(int id, Category updatedCategory);
-    
-    void delete(int id);
 
 }
