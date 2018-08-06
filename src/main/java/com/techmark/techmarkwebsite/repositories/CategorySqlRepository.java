@@ -3,7 +3,6 @@ package com.techmark.techmarkwebsite.repositories;
 import com.techmark.techmarkwebsite.models.Category;
 import com.techmark.techmarkwebsite.models.Product;
 import com.techmark.techmarkwebsite.repositories.base.CategoryRepository;
-import com.techmark.techmarkwebsite.repositories.base.GenericRepository;
 import org.hibernate.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CategorySqlRepository implements CategoryRepository, GenericRepository<Category> {
+public class CategorySqlRepository implements CategoryRepository {
 
     private SessionFactory factory;
 
