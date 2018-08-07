@@ -27,7 +27,7 @@ public class ProductSerializer extends StdSerializer<Product> {
         gen.writeStringField("description",value.getDescription());
         gen.writeStringField("imageurl",value.getImageURL());
         gen.writeObjectFieldStart("category");
-        gen.writeNumberField("categoryId", value.getCategory().getCategoryID());
+        gen.writeNumberField("categoryId", value.getCategory().getCategoryId());
         gen.writeStringField("categoryName", value.getCategory().getName());
         gen.writeEndObject();
         gen.writeEndObject();

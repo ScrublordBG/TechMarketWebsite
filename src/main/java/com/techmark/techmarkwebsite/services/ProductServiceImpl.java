@@ -51,7 +51,7 @@ public class ProductServiceImpl implements GenericService<Product> {
             updatedProduct.setImageURL(oldProduct.getImageURL());
         }
     
-        if(updatedProduct.getCategory().getCategoryID() == 0){
+        if(updatedProduct.getCategory().getCategoryId() == 0){
             updatedProduct.setCategory(oldProduct.getCategory());
         }
     

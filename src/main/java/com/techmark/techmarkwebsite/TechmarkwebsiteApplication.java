@@ -16,7 +16,6 @@ public class TechmarkwebsiteApplication {
 
     }
 
-
     @Bean
     public SessionFactory createSessionFactory() {
         System.out.println("SessionFactory was created.");

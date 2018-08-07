@@ -16,7 +16,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class UserServicesImplTests {
+public class UserServiceImplTests {
 	
 	@Mock
 	GenericRepository<User> mockUserSqlRepository;
@@ -53,9 +53,13 @@ public class UserServicesImplTests {
 	public void UpdateUser_Returns_UpdatedUser(){
 		User mockUpdatedUser = new User(1,"new_fn1","new_ln1","new_un1","new_pw1");
 		
+		// Test that the mocked repository receives in its update method an integer in the first place and a User class in the second
 		doNothing().when(mockUserSqlRepository).update(isA(Integer.class),isA(User.class));
+		
+		// Tell the service to send via its update method 1 and mockUpdatedUser
 		service.update(1, mockUpdatedUser);
 		
+		// Verify that the mocked repository receive as a one-time event the update method, where it should receive 1 and mockUpdatedUser
 		verify(mockUserSqlRepository,times(1)).update(1,mockUpdatedUser);
 	}
 	
