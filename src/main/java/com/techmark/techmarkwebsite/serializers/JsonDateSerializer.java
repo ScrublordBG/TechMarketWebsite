@@ -14,6 +14,9 @@ import java.util.Date;
  * Used to serialize Java.util.Date, which is not a common JSON
  * type, so we have to create a custom serialize method;.
  */
+
+/** Vladi - Json serializer manages the visualized output of a http request (get, put, post) in a json format. Especially helpful when there are embedded jsons within a json and when there are mapped columns (classes) that lead to embedding a list/ lists of json(s) within the main json => you can prevent such visualization of embedded jsons with the help of the json serializer. You can also format embedded json as a series of normal variables within the main json.*/
+
 @Component
 public class JsonDateSerializer extends JsonSerializer<Date> {
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");

@@ -56,7 +56,10 @@ public class ProductController {
       @RequestParam(value = "categoryName", required = false) String categoryName
     ){
         int productId = Integer.parseInt(productIdString);
-        int price = Integer.parseInt(priceString);
+        int price = 0;
+        if (!priceString.equals("")){
+            price =Integer.parseInt(priceString);
+        }
         int categoryId = Integer.parseInt(categoryIdString);
         Category category = new Category(categoryId, categoryName);
         Product updatedProduct = new Product(productId, name, price, description, imageUrl, category);

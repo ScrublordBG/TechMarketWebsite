@@ -1,5 +1,7 @@
 package com.techmark.techmarkwebsite.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.techmark.techmarkwebsite.models.Embeddables.OrderDetailId;
 import com.techmark.techmarkwebsite.serializers.OrderDetailSerializer;
 
@@ -8,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "order_details")
-//@JsonSerialize(using = OrderDetailSerializer.class)
+@JsonSerialize(using = OrderDetailSerializer.class)
 public class OrderDetail {
     
     @EmbeddedId
@@ -20,6 +22,7 @@ public class OrderDetail {
         insertable = false,
         updatable = false
     )
+    @JsonManagedReference
     protected Order order;
     
     @ManyToOne
@@ -28,6 +31,7 @@ public class OrderDetail {
         insertable = false,
         updatable = false
     )
+    @JsonManagedReference
     protected Product product;
     
     @Column(name = "ProductPrice")

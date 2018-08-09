@@ -1,5 +1,6 @@
 package com.techmark.techmarkwebsite.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.techmark.techmarkwebsite.serializers.ProductSerializer;
@@ -28,12 +29,13 @@ public class Product {
     @Column(name = "ImageURL")
     private String imageURL;
     
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "CategoryID")
 		@JsonManagedReference
     private Category category;
 	
 		@OneToMany(mappedBy = "product")
+    @JsonBackReference
 		private List<OrderDetail> orderDetails;
 	
     public Product() {

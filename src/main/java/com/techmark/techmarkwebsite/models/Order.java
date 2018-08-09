@@ -1,5 +1,6 @@
 package com.techmark.techmarkwebsite.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.techmark.techmarkwebsite.serializers.JsonDateSerializer;
@@ -18,16 +19,18 @@ public class Order {
     @Column(name = "OrderID")
     private int orderId;
     
-    // @JsonIgnore makes so that info coming from related object (here, User) is not transferred and visualized within the json response when we want to view order(s). In other words, ignores info coming from other mapped classes (here - User class). Could be also managed using @JsonManagedReference and in the case of mappedBy - using @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    // @JsonIgnore makes so that info coming from related object (here, User) is not transferred and visualized within the json response when we want to view order(s). In other words, ignores info coming from other mapped classes (here - User class). Could be also managed using @JsonManagedReference and in the case of mappedBy - using @JsonBackReference. We can manage this also with json serializers.
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "UserID")
 		@JsonManagedReference
     private User user;
     
     @OneToMany(
+    		fetch = FetchType.EAGER, /* must be of type EAGER or else we cannot execute get requests to find all order details for a given order id*/
     		mappedBy = "order",
 				cascade = CascadeType.ALL,
 				orphanRemoval = true)
+		@JsonBackReference
 		private List<OrderDetail> orderDetailList;
     
     @Column(name = "OrderDate")
