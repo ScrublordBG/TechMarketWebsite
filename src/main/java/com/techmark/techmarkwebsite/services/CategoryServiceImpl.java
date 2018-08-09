@@ -41,7 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public void update(int id, Category updatedCategory) {
 		Category oldCategory = getById(id);
-		if (updatedCategory.getName() == null) {
+		if (updatedCategory.getName().equals("")) {
 			updatedCategory.setName(oldCategory.getName());
 		}
 		repository.update(id, updatedCategory);

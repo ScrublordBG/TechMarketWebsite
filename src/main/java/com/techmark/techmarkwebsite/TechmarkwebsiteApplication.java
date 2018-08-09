@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @SpringBootApplication
 public class TechmarkwebsiteApplication {
-
+    
     public static void main(String[] args) {
         SpringApplication.run(TechmarkwebsiteApplication.class, args);
-
+        
     }
 
     @Bean
@@ -25,7 +25,7 @@ public class TechmarkwebsiteApplication {
                 .addAnnotatedClass(Product.class)
                 .addAnnotatedClass(User.class)
                 .addAnnotatedClass(Order.class)
-                .addAnnotatedClass(OrderDetails.class)
+                .addAnnotatedClass(OrderDetail.class)
                 .buildSessionFactory();
 
     }

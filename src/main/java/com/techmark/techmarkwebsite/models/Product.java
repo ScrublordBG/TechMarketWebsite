@@ -34,7 +34,7 @@ public class Product {
     private Category category;
 	
 		@OneToMany(mappedBy = "product")
-		private List<OrderDetails> orderDetails;
+		private List<OrderDetail> orderDetails;
 	
     public Product() {
     }
@@ -104,11 +104,11 @@ public class Product {
         this.category = category;
     }
 	
-	public List<OrderDetails> getOrderDetails() {
+	public List<OrderDetail> getOrderDetails() {
 		return orderDetails;
 	}
 	
-	public void setOrderDetails(List<OrderDetails> orderDetails) {
+	public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 }

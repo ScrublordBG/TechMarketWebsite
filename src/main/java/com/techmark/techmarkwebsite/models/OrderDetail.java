@@ -1,17 +1,20 @@
 package com.techmark.techmarkwebsite.models;
 
-import com.techmark.techmarkwebsite.models.Embeddables.OrderDetailsId;
+import com.techmark.techmarkwebsite.models.Embeddables.OrderDetailId;
+import com.techmark.techmarkwebsite.serializers.OrderDetailSerializer;
+
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order details")
-public class OrderDetails {
+@Table(name = "order_details")
+//@JsonSerialize(using = OrderDetailSerializer.class)
+public class OrderDetail {
     
     @EmbeddedId
-    protected OrderDetailsId orderDetailsId;
+    protected OrderDetailId orderDetailId;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(
         name = "OrderID",
         insertable = false,
@@ -33,25 +36,25 @@ public class OrderDetails {
     @Column(name = "Quantity")
     private int quantity;
 
-    public OrderDetails() {
+    public OrderDetail() {
     }
 
     /*public OrderDetails(OrderDetailsId id) {
         this.orderDetailsId = id;
     }*/
     
-    public OrderDetails(OrderDetailsId id, int productPrice, int quantity) {
-        this.orderDetailsId = id;
+    public OrderDetail(OrderDetailId id, int productPrice, int quantity) {
+        this.orderDetailId = id;
         this.productPrice = productPrice;
         this.quantity = quantity;
     }
     
-    public OrderDetailsId getOrderDetailsId() {
-        return orderDetailsId;
+    public OrderDetailId getOrderDetailId() {
+        return orderDetailId;
     }
     
-    public void setOrderDetailsId(OrderDetailsId orderDetailsId) {
-        this.orderDetailsId = orderDetailsId;
+    public void setOrderDetailId(OrderDetailId orderDetailId) {
+        this.orderDetailId = orderDetailId;
     }
     
     public int getProductPrice() {
@@ -69,4 +72,8 @@ public class OrderDetails {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+	
+		public void setOrder(Order order) {
+			this.order = order;
+		}
 }

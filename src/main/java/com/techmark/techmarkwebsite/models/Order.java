@@ -24,8 +24,11 @@ public class Order {
 		@JsonManagedReference
     private User user;
     
-    @OneToMany(mappedBy = "order")
-		private List<OrderDetails> orderDetails;
+    @OneToMany(
+    		mappedBy = "order",
+				cascade = CascadeType.ALL,
+				orphanRemoval = true)
+		private List<OrderDetail> orderDetailList;
     
     @Column(name = "OrderDate")
     private Date date;
@@ -40,10 +43,10 @@ public class Order {
         this.date = date;
     }
 	
-	public Order(User user, Date date) {
-		this.user = user;
-		this.date = date;
-	}
+		public Order(User user, Date date) {
+			this.user = user;
+			this.date = date;
+		}
 
     public int getOrderId() {
         return orderId;
@@ -71,11 +74,23 @@ public class Order {
         this.date = date;
     }
 	
-	public List<OrderDetails> getOrderDetails() {
-		return orderDetails;
-	}
+		public List<OrderDetail> getOrderDetailList() {
+			return orderDetailList;
+		}
+		
+		/*public void setOrderDetailsList(List<OrderDetails> orderDetailsList) {
+			this.orderDetailsList = orderDetailsList;
+		}*/
 	
-	public void setOrderDetails(List<OrderDetails> orderDetails) {
-		this.orderDetails = orderDetails;
-	}
+		// additionally added (check if work and are necessary; if not, delete these two methods)
+		// used for deleting/ adding (updating) orderDetails from/ to an order
+		public void addOrderDetail(OrderDetail orderDetail) {
+			this.orderDetailList.add(orderDetail);
+			orderDetail.setOrder(this);
+		}
+		
+		public void removeOrderDetail(OrderDetail orderDetail) {
+			orderDetail.setOrder(null);
+			this.orderDetailList.remove(orderDetail);
+		}
 }

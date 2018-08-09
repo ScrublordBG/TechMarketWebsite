@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class OrderDetailsId implements Serializable {
+public class OrderDetailId implements Serializable {
 
 	@Column(name = "OrderID")
 	protected int orderId;
@@ -14,10 +14,10 @@ public class OrderDetailsId implements Serializable {
 	@Column(name = "ProductID")
 	protected int productId;
 	
-	protected OrderDetailsId() {
+	protected OrderDetailId() {
 	}
 	
-	public OrderDetailsId(int orderId, int productId) {
+	public OrderDetailId(int orderId, int productId) {
 		this.orderId = orderId;
 		this.productId = productId;
 	}
@@ -43,7 +43,7 @@ public class OrderDetailsId implements Serializable {
 		if (this == o) { return true; }
 		
 		if (o == null || getClass() != o.getClass()) { return false; }
-		OrderDetailsId that = (OrderDetailsId) o;
+		OrderDetailId that = (OrderDetailId) o;
 		if (orderId != that.orderId) { return false; }
 		if (productId != that.productId) { return false; }
 		return true;

@@ -35,7 +35,7 @@ public class ProductServiceImpl implements GenericService<Product> {
     @Override
     public void update(int productId, Product updatedProduct) {
         Product oldProduct = repository.getById(productId);
-        if(updatedProduct.getName() == null){
+        if(updatedProduct.getName().equals("")){
             updatedProduct.setName(oldProduct.getName());
         }
     
@@ -43,11 +43,11 @@ public class ProductServiceImpl implements GenericService<Product> {
             updatedProduct.setPrice(oldProduct.getPrice());
         }
     
-        if(updatedProduct.getDescription() == null){
+        if(updatedProduct.getDescription().equals("")){
             updatedProduct.setDescription(oldProduct.getDescription());
         }
     
-        if(updatedProduct.getImageURL() == null){
+        if(updatedProduct.getImageURL().equals("")){
             updatedProduct.setImageURL(oldProduct.getImageURL());
         }
     
