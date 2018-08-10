@@ -1,7 +1,6 @@
 package com.techmark.techmarkwebsite.services;
 
 import com.techmark.techmarkwebsite.models.Order;
-import com.techmark.techmarkwebsite.models.Product;
 import com.techmark.techmarkwebsite.models.User;
 import com.techmark.techmarkwebsite.repositories.base.GenericRepository;
 import org.junit.Assert;
