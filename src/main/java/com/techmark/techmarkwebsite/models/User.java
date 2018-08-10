@@ -2,9 +2,10 @@ package com.techmark.techmarkwebsite.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -15,15 +16,21 @@ public class User {
     @Column(name = "UserID")
     private int userId;
     
+    //@NotNull
     @Column(name = "FirstName")
     private String firstName;
     
+    //@NotNull
     @Column(name = "LastName")
     private String lastName;
     
+    //@NotNull
+    //@Size(min=8)
     @Column(name = "Username")
     private String username;
     
+    //@NotNull
+    //@Size(min=8)
     @Column(name = "Password")
     private String password;
     

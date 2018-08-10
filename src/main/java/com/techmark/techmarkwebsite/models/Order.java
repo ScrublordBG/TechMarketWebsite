@@ -7,6 +7,7 @@ import com.techmark.techmarkwebsite.serializers.JsonDateSerializer;
 import com.techmark.techmarkwebsite.serializers.OrderSerializer;
 
 import javax.persistence.*;
+import javax.validation.constraints.Past;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class Order {
 		@JsonBackReference
 		private List<OrderDetail> orderDetailList;
     
+    //@Past
     @Column(name = "OrderDate")
     private Date date;
     
