@@ -29,7 +29,7 @@ public class ProductServiceImplTests {
 	ProductServiceImpl service;
 	
 	@Test
-	public void GetById_Returns_ProductWithSameId(){
+	public void getById_Returns_ProductWithSameId(){
 		int productId = 3;
 		Mockito.when(mockProductSqlRepository.getById(productId))
 				.thenReturn(
@@ -42,7 +42,7 @@ public class ProductServiceImplTests {
 	}
 	
 	@Test
-	public void GetAll_Returns_AllProducts(){
+	public void getAll_Returns_AllProducts(){
 		Mockito.when(mockProductSqlRepository.getAll())
 				.thenReturn(Arrays.asList(
 						new Product(1, "pd1", 100, "descr1", "url1", new Category(1, "cat1")),
@@ -56,7 +56,7 @@ public class ProductServiceImplTests {
 	}
 	
 	@Test
-	public void UpdateProduct_Returns_UpdatedProduct(){
+	public void updateProduct_Returns_UpdatedProduct(){
 		Product mockUpdatedProduct = new Product(2, "pd2", 2, "descr2", "url2", new Category(1, "cat1"));
 		
 		// Test that the mocked repository receives in its update method an integer in the first place and a User class in the second
@@ -70,7 +70,7 @@ public class ProductServiceImplTests {
 	}
 	
 	@Test
-	public void CreateProduct_Returns_NewProduct(){
+	public void createProduct_Returns_NewProduct(){
 		Product mockNewProduct = new Product(2, "pd2", 2, "descr2", "url2", new Category(1, "cat1"));
 		doNothing().when(mockProductSqlRepository).create(isA(Product.class));
 		service.create(mockNewProduct);
@@ -79,7 +79,7 @@ public class ProductServiceImplTests {
 	}
 	
 	@Test
-	public void DeleteProduct_Returns_TheProductHasBeenDeleted(){
+	public void deleteProduct_Returns_TheProductHasBeenDeleted(){
 		doNothing().when(mockProductSqlRepository).delete(isA(Integer.class));
 		service.delete(1);
 		

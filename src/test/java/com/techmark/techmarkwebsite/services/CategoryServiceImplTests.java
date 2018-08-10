@@ -30,7 +30,7 @@ public class CategoryServiceImplTests {
 	CategoryServiceImpl service;
 	
 	@Test
-	public void GetAllProductsByCategoryId_Returns_AllProductsWithSetId(){
+	public void getAllProductsByCategoryId_Returns_AllProductsWithSetId(){
 		int categoryId = 2;
 		Mockito.when(mockCategorySqlRepository.getAllByCategoryId(categoryId))
 				.thenReturn(Arrays.asList(
@@ -45,7 +45,7 @@ public class CategoryServiceImplTests {
 	}
 	
 	@Test
-	public void GetById_Returns_CategoryWithSameId(){
+	public void getById_Returns_CategoryWithSameId(){
 		int categoryId = 3;
 		Mockito.when(mockCategorySqlRepository.getById(categoryId))
 				.thenReturn(
@@ -58,7 +58,7 @@ public class CategoryServiceImplTests {
 	}
 	
 	@Test
-	public void GetAll_Returns_AllCategories(){
+	public void getAll_Returns_AllCategories(){
 		Mockito.when(mockCategorySqlRepository.getAll())
 				.thenReturn(Arrays.asList(
 						new Category(1, "catDescr1"),
@@ -72,7 +72,7 @@ public class CategoryServiceImplTests {
 	}
 	
 	@Test
-	public void UpdateCategory_Returns_UpdatedCategory(){
+	public void updateCategory_Returns_UpdatedCategory(){
 		Category mockUpdatedCategory = new Category(1, "catDescr1");
 		
 		// Test that the mocked repository receives in its update method an integer in the first place and a Order class in the second
@@ -86,7 +86,7 @@ public class CategoryServiceImplTests {
 	}
 	
 	@Test
-	public void CreateCategory_Returns_NewCategory(){
+	public void createCategory_Returns_NewCategory(){
 		Category mockNewCategory = new Category(1, "catDescr1");
 		doNothing().when(mockCategorySqlRepository).create(isA(Category.class));
 		service.create(mockNewCategory);
@@ -95,7 +95,7 @@ public class CategoryServiceImplTests {
 	}
 	
 	@Test
-	public void DeleteCategory_Returns_TheCategoryHasBeenDeleted(){
+	public void deleteCategory_Returns_TheCategoryHasBeenDeleted(){
 		doNothing().when(mockCategorySqlRepository).delete(isA(Integer.class));
 		service.delete(1);
 		

@@ -28,7 +28,7 @@ public class OrderDetailServiceImplTests {
 	OrderDetailServiceImpl service;
 	
 	@Test
-	public void GetById_Returns_OrderDetailWithThisOrderDetailId(){
+	public void getById_Returns_OrderDetailWithThisOrderDetailId(){
 		int orderId = 3;
 		int productId = 10;
 		OrderDetailId orderDetailId = new OrderDetailId(orderId, productId);
@@ -47,7 +47,7 @@ public class OrderDetailServiceImplTests {
 	}
 	
 	@Test
-	public void GetAll_Returns_AllOrderDetails(){
+	public void getAll_Returns_AllOrderDetails(){
 		Mockito.when(mockOrderDetailSqlRepository.getAll())
 				.thenReturn(Arrays.asList(
 						new OrderDetail(new OrderDetailId(3, 10), 100, 5),
@@ -62,7 +62,7 @@ public class OrderDetailServiceImplTests {
 	}
 	
 	@Test
-	public void UpdateOrderDetail_Returns_UpdatedOrderDetail(){
+	public void updateOrderDetail_Returns_UpdatedOrderDetail(){
 		OrderDetail mockUpdatedOrderDetail = new OrderDetail(new OrderDetailId(1, 2), 10, 5);
 		
 		// Test that the mocked repository receives in its update method an OrderDetailId class in the first place and an OrderDetail class in the second
@@ -76,7 +76,7 @@ public class OrderDetailServiceImplTests {
 	}
 	
 	@Test
-	public void CreateOrderDetail_Returns_NewOrderDetail(){
+	public void createOrderDetail_Returns_NewOrderDetail(){
 		OrderDetail mockNewOrderDetail = new OrderDetail(new OrderDetailId(1, 2), 3, 4);
 		doNothing().when(mockOrderDetailSqlRepository).create(isA(OrderDetail.class));
 		service.create(mockNewOrderDetail);
@@ -85,7 +85,7 @@ public class OrderDetailServiceImplTests {
 	}
 	
 	@Test
-	public void DeleteOrderDetail_Returns_TheOrderDetailHasBeenDeleted(){
+	public void deleteOrderDetail_Returns_TheOrderDetailHasBeenDeleted(){
 		doNothing().when(mockOrderDetailSqlRepository).delete(isA(OrderDetailId.class));
 		service.delete(new OrderDetailId(1, 2));
 		

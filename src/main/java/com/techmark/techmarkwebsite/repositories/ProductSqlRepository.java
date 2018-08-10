@@ -66,7 +66,7 @@ public class ProductSqlRepository implements GenericRepository<Product> {
             product.setName(updateProduct.getName());
             product.setPrice(updateProduct.getPrice());
             product.setDescription(updateProduct.getDescription());
-            product.setImageURL(updateProduct.getImageURL());
+            product.setImageUrl(updateProduct.getImageUrl());
             product.setCategory(updateProduct.getCategory());
             session.getTransaction().commit();
         } catch (Exception ex) {

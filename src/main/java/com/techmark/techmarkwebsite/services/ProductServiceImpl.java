@@ -47,8 +47,8 @@ public class ProductServiceImpl implements GenericService<Product> {
             updatedProduct.setDescription(oldProduct.getDescription());
         }
     
-        if(updatedProduct.getImageURL().equals("")){
-            updatedProduct.setImageURL(oldProduct.getImageURL());
+        if(updatedProduct.getImageUrl().equals("")){
+            updatedProduct.setImageUrl(oldProduct.getImageUrl());
         }
     
         if(updatedProduct.getCategory().getCategoryId() == 0){

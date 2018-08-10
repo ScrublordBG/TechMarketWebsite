@@ -25,7 +25,7 @@ public class UserServiceImplTests {
 	UserServiceImpl service;
 	
 	@Test
-	public void GetById_Returns_UserWithSameId(){
+	public void getById_Returns_UserWithSameId(){
 		int userId = 2;
 		Mockito.when(mockUserSqlRepository.getById(userId))
 				.thenReturn(new User(2,"fn2", "ln2","un2","pw2"));
@@ -36,7 +36,7 @@ public class UserServiceImplTests {
 	}
 	
 	@Test
-	public void GetAll_Returns_AllUsers(){
+	public void getAll_Returns_AllUsers(){
 		Mockito.when(mockUserSqlRepository.getAll())
 				.thenReturn(Arrays.asList(
 						new User(1,"fn1", "ln1","un1","pw1"),
@@ -50,7 +50,7 @@ public class UserServiceImplTests {
 	}
 	
 	@Test
-	public void UpdateUser_Returns_UpdatedUser(){
+	public void updateUser_Returns_UpdatedUser(){
 		User mockUpdatedUser = new User(1,"new_fn1","new_ln1","new_un1","new_pw1");
 		
 		// Test that the mocked repository receives in its update method an integer in the first place and a User class in the second
@@ -64,7 +64,7 @@ public class UserServiceImplTests {
 	}
 	
 	@Test
-	public void CreateUser_Returns_NewUser(){
+	public void createUser_Returns_NewUser(){
 		User mockNewUser = new User(1,"new_fn1","new_ln1","new_un1","new_pw1");
 		doNothing().when(mockUserSqlRepository).create(isA(User.class));
 		service.create(mockNewUser);
@@ -73,7 +73,7 @@ public class UserServiceImplTests {
 	}
 	
 	@Test
-	public void DeleteUser_Returns_TheUserHasBeenDeleted(){
+	public void deleteUser_Returns_TheUserHasBeenDeleted(){
 		//User mockUser = new User(1,"new_fn1","new_ln1","new_un1","new_pw1");
 		doNothing().when(mockUserSqlRepository).delete(isA(Integer.class));
 		service.delete(1);

@@ -1,12 +1,11 @@
 package com.techmark.techmarkwebsite.web;
 
 import com.techmark.techmarkwebsite.models.Category;
+import com.techmark.techmarkwebsite.models.Product;
 import com.techmark.techmarkwebsite.services.base.CategoryService;
-import org.apache.logging.log4j.core.util.TypeUtil;
-import org.hamcrest.Matchers;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -20,14 +19,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
-import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.isA;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -42,7 +36,7 @@ public class CategoryControllerTests {
 	MockMvc mockMvc;
 	
 	@Test
-	public void getAll_whenCategory_shouldStatus200AndContainCategories() throws Exception {
+	public void getAll_CategoryEntries_ShouldReturnStatus200AndAllCategories() throws Exception {
 		
 		/**
 		 * We can write an unit test for this controller method by following these steps:
@@ -81,19 +75,6 @@ public class CategoryControllerTests {
 		
 		verify(mockService, times(1)).getAll();
 		verifyNoMoreInteractions(mockService);
-		
-		/*categories
-				.forEach(category ->
-				{
-					try {
-						expect.andExpect(
-								content()
-										.string(containsString(category.getName()))
-						);
-					} catch (Exception e) {
-						Assert.fail();
-					}
-				});*/
 	}
 	
 	@Test
@@ -109,6 +90,87 @@ public class CategoryControllerTests {
 				.andExpect(jsonPath("$.name").value("Televisions"));
 		
 		verify(mockService, times(1)).getById(1);
+		verifyNoMoreInteractions(mockService);
+	}
+	
+	@Test
+	public void add_NewCategoryEntry_ShouldAddCategoryEntryAndReturnAddedEntry() throws Exception {
+		
+		doNothing().when(mockService).create(isA(Category.class));
+		
+		mockMvc.perform(post("/categories/addCategory"))
+				.andDo(print())
+				.andExpect(status().isOk());
+		
+		ArgumentCaptor<Category> dtoCaptor = ArgumentCaptor.forClass(Category.class);
+		verify(mockService, times(1)).create(dtoCaptor.capture());
+		verifyNoMoreInteractions(mockService);
+	}
+	
+	@Test
+	public void update_CategoryEntry_ShouldUpdateCategoryEntryAndReturnUpdatedEntry() throws Exception {
+		
+		doNothing().when(mockService).update(isA(Integer.class),isA(Category.class));
+		
+		mockMvc.perform(put("/categories/updateCategory/{id}", 1))
+				.andDo(print())
+				.andExpect(status().isOk());
+		
+		verify(mockService, times(1)).update(isA(Integer.class), isA(Category.class));
+		verifyNoMoreInteractions(mockService);
+	}
+	
+	@Test
+	public void delete_CategoryEntry_ShouldDeleteCategoryEntryAndReturnDeletedEntry() throws Exception {
+		
+		doNothing().when(mockService).delete(isA(Integer.class));
+		
+		mockMvc.perform(delete("/categories/deleteCategory/{id}", 1))
+				.andDo(print())
+				.andExpect(status().isOk());
+		
+		verify(mockService, times(1)).delete(isA(Integer.class));
+		verifyNoMoreInteractions(mockService);
+	}
+	
+	@Test
+	public void getAllProductsById_ShouldReturnAllProductsWithGivenCategoryId() throws Exception {
+		List<Product> products = Arrays.asList(
+				new Product(1, "product1", 10, "description1", "image1", new Category(1, "category1")),
+				new Product(2, "product2", 20, "description2", "image2", new Category(1, "category1")),
+				new Product(3, "product3", 30, "description3", "image3", new Category(1, "category1"))
+		);
+		
+		Mockito.when(mockService.getAllProductsById(1))
+				.thenReturn(products);
+		
+		ResultActions expect = mockMvc.perform(get("/categories/getAllProductsByCategoryId/{id}", 1))
+				.andDo(print())
+				.andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+				.andExpect(jsonPath("$[0].id").value(1))
+				.andExpect(jsonPath("$[0].name").value("product1"))
+				.andExpect(jsonPath("$[0].price").value(10))
+				.andExpect(jsonPath("$[0].description").value("description1"))
+				.andExpect(jsonPath("$[0].imageUrl").value("image1"))
+				.andExpect(jsonPath("$[0].category.categoryId").value(1))
+				.andExpect(jsonPath("$[0].category.categoryName").value("category1"))
+				.andExpect(jsonPath("$[1].id").value(2))
+				.andExpect(jsonPath("$[1].name").value("product2"))
+				.andExpect(jsonPath("$[1].price").value(20))
+				.andExpect(jsonPath("$[1].description").value("description2"))
+				.andExpect(jsonPath("$[1].imageUrl").value("image2"))
+				.andExpect(jsonPath("$[1].category.categoryId").value(1))
+				.andExpect(jsonPath("$[1].category.categoryName").value("category1"))
+				.andExpect(jsonPath("$[2].id").value(3))
+				.andExpect(jsonPath("$[2].name").value("product3"))
+				.andExpect(jsonPath("$[2].price").value(30))
+				.andExpect(jsonPath("$[2].description").value("description3"))
+				.andExpect(jsonPath("$[2].imageUrl").value("image3"))
+				.andExpect(jsonPath("$[2].category.categoryId").value(1))
+				.andExpect(jsonPath("$[2].category.categoryName").value("category1"));
+		
+		verify(mockService, times(1)).getAllProductsById(1);
 		verifyNoMoreInteractions(mockService);
 	}
 }

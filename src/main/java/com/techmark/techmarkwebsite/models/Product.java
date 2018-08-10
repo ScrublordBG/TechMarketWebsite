@@ -27,7 +27,7 @@ public class Product {
     private String description;
 
     @Column(name = "ImageURL")
-    private String imageURL;
+    private String imageUrl;
     
     @ManyToOne
     @JoinColumn(name = "CategoryID")
@@ -41,20 +41,20 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productId, String name, int price, String description, String imageURL, Category category) {
+    public Product(int productId, String name, int price, String description, String imageUrl, Category category) {
         this.productId = productId;
         this.name = name;
         this.price = price;
         this.description = description;
-        this.imageURL = imageURL;
+        this.imageUrl = imageUrl;
         this.category = category;
     }
     
-    public Product(String name, int price, String description, String imageURL, Category category) {
+    public Product(String name, int price, String description, String imageUrl, Category category) {
         this.name = name;
         this.price = price;
         this.description = description;
-        this.imageURL = imageURL;
+        this.imageUrl = imageUrl;
         this.category = category;
     }
 
@@ -90,12 +90,12 @@ public class Product {
         this.description = description;
     }
 
-    public String getImageURL() {
-        return imageURL;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public Category getCategory() {

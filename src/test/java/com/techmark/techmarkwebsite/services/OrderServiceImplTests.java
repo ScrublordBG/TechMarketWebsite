@@ -28,7 +28,7 @@ public class OrderServiceImplTests {
 	OrderServiceImpl service;
 	
 	@Test
-	public void GetById_Returns_OrderWithSameId(){
+	public void getById_Returns_OrderWithSameId(){
 		int orderId = 3;
 		Date orderDate = new GregorianCalendar(2018, Calendar.AUGUST, 3).getTime();
 		Mockito.when(mockOrderSqlRepository.getById(orderId))
@@ -42,7 +42,7 @@ public class OrderServiceImplTests {
 	}
 	
 	@Test
-	public void GetAll_Returns_AllOrders(){
+	public void getAll_Returns_AllOrders(){
 		Mockito.when(mockOrderSqlRepository.getAll())
 				.thenReturn(Arrays.asList(
 						new Order(1, new User(), new GregorianCalendar(2018, Calendar.JANUARY, 30).getTime()),
@@ -56,7 +56,7 @@ public class OrderServiceImplTests {
 	}
 	
 	@Test
-	public void UpdateOrder_Returns_UpdatedOrder(){
+	public void updateOrder_Returns_UpdatedOrder(){
 		Order mockUpdatedOrder = new Order(1, new User(), new GregorianCalendar(2018, Calendar.JANUARY, 30).getTime());
 		
 		// Test that the mocked repository receives in its update method an integer in the first place and a Order class in the second
@@ -70,7 +70,7 @@ public class OrderServiceImplTests {
 	}
 	
 	@Test
-	public void CreateOrder_Returns_NewOrder(){
+	public void createOrder_Returns_NewOrder(){
 		Order mockNewOrder = new Order(1, new User(), new GregorianCalendar(2018, Calendar.JANUARY, 30).getTime());
 		doNothing().when(mockOrderSqlRepository).create(isA(Order.class));
 		service.create(mockNewOrder);
@@ -79,7 +79,7 @@ public class OrderServiceImplTests {
 	}
 	
 	@Test
-	public void DeleteOrder_Returns_TheOrderHasBeenDeleted(){
+	public void deleteOrder_Returns_TheOrderHasBeenDeleted(){
 		doNothing().when(mockOrderSqlRepository).delete(isA(Integer.class));
 		service.delete(1);
 		
