@@ -3,6 +3,7 @@ package com.techmark.techmarkwebsite.web;
 import com.techmark.techmarkwebsite.models.Category;
 import com.techmark.techmarkwebsite.models.Product;
 import com.techmark.techmarkwebsite.services.base.GenericService;
+import com.techmark.techmarkwebsite.services.base.ProductService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -34,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class ProductControllerTests {
 	@MockBean
-	GenericService<Product> mockService;
+	ProductService mockService;
 	
 	@Autowired
 	MockMvc mockMvc;

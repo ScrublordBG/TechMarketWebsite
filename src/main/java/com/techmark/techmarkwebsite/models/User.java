@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Comparable<User> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UserID")
@@ -25,12 +25,12 @@ public class User {
     private String lastName;
     
     //@NotNull
-    //@Size(min=8)
+    @Size(min=8, max = 15)
     @Column(name = "Username")
     private String username;
     
     //@NotNull
-    //@Size(min=8)
+    @Size(min=8, max = 20)
     @Column(name = "Password")
     private String password;
     
@@ -109,5 +109,29 @@ public class User {
     
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+    
+    @Override
+    public String toString() {
+        return "User: " +
+            "id = " + userId +
+            ", username = " + username +
+            ", password = " + password +
+            ", fullName = " + firstName + " " + lastName;
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof User) {
+            User user = (User) object;
+            return this.getUsername().equals(user.getUsername());
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public int compareTo(User o) {
+        return this.getUsername().compareTo(o.getUsername());
     }
 }

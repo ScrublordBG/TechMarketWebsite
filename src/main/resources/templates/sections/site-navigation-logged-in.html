@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body>
+<header th:fragment="site-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <h1 class="navbar-brand mb-0 h1"><a href="http://localhost:8080/"><span>Tech</span> Market</a></h1>
+        <!-- Button to collapses the navbar when resizing website -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navigation bar -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost:8080/about">About Us <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active" data-toggle="modal" data-target="#subscribeModal">
+                    <a class="nav-link" href="#">
+                        <span>Subscribe&nbsp;
+                                <span class="fa fa-user-plus"></span>
+                            </span>
+                        <span class="sr-only">
+                            (current)
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item active" data-toggle="modal" data-target="#logInModal">
+                    <a class="nav-link" href="#">
+                        <span>Sign in&nbsp;
+                            <span class="fa fa-user"></span>
+                        </span>
+                        <span class="sr-only">
+                            (current)
+                        </span>
+                    </a>
+                </li>
+                <!-- Dropdown menu -->
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span>Products</span>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" th:if="${not #lists.isEmpty(categories)}">
+                            <a class="dropdown-item" th:href="@{/search_products_by_category(id=${category.categoryId})}" th:each="category : ${categories}"><span th:text="${category.name}"></span></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- Search form for searching products by product name or keyword -->
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+            <ul class="navbar-nav">
+                <li class="nav-item active" data-toggle="modal" data-target="#cartModal">
+                    <a class="nav-link" href="#">
+                        <span>
+                            <span>Shopping cart&nbsp;
+                                <span class="fa fa-shopping-cart"></span>
+                            </span>
+                        </span>
+                        <span class="sr-only">
+                            (current)
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Subscribe Modal -->
+    <div id="subscribeModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Subscribe form -->
+                    <form class="form-signin container" id="subscribeForm" action="./users.json">
+                        <h2 class="form-signin-heading">Please sign up</h2>
+                        <label for="username" class="sr-only">Username</label>
+                        <input id="subscribersUsername" type="text" class="form-control" placeholder="Username" required autofocus>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input id="subscribersEmail" type="email" class="form-control" placeholder="Email address" required autofocus>
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input id="subscribersPassword" type="password" class="form-control" placeholder="Password" required>
+                        <label for="inputPassword" class="sr-only">Confirm Password</label>
+                        <input id="subscribersPasswordConf" type="password" class="form-control" placeholder="Confirm Password" required>
+                        <!-- Gender radio buttons -->
+                        <div class="container" id="genderRadioButtons">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                                <label class="form-check-label" for="inlineRadio3">Other</label>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Log-in Modal -->
+    <div id="logInModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Sign-in form -->
+                    <form class="form-signin container" id="signInForm" action="./users.json">
+                        <h2 class="form-signin-heading">Please sign in</h2>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input id="signInEmail" type="email" class="form-control" placeholder="Email address" required autofocus>
+                        <label for="inputPassword" class="sr-only">Password</label>
+                        <input id="signInPassword" type="password" class="form-control" placeholder="Password" required>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+</body>
+</html>

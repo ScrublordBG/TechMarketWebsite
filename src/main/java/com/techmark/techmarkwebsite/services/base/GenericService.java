@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface GenericService<T> {
     
-    void create(T obj);
+    void create(T obj); //throws Exception;
     
     T getById(int id);
     

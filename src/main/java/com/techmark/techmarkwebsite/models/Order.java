@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 @JsonSerialize(using = OrderSerializer.class)
-public class Order {
+public class Order implements Comparable<Order> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "OrderID")
@@ -97,5 +97,29 @@ public class Order {
 		public void removeOrderDetail(OrderDetail orderDetail) {
 			orderDetail.setOrder(null);
 			this.orderDetailList.remove(orderDetail);
+		}
+	
+		@Override
+		public String toString() {
+			return "Order: " +
+					", userId = " + user.getUserId() +
+					", date = " + date;
+		}
+		
+		@Override
+		public boolean equals(Object object) {
+			if (object instanceof Order) {
+				Order order = (Order) object;
+				return this.getOrderId() == order.getOrderId();
+			}
+			
+			return false;
+		}
+		
+		@Override
+		public int compareTo(Order o) {
+			Integer thisId = this.getOrderId();
+			Integer thatId = o.getOrderId();
+			return thisId.compareTo(thatId);
 		}
 }

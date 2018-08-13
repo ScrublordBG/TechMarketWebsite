@@ -1,4 +1,4 @@
-package com.techmark.techmarkwebsite.web;
+package com.techmark.techmarkwebsite.web.rest_controllers;
 
 import com.techmark.techmarkwebsite.models.Order;
 import com.techmark.techmarkwebsite.models.User;

@@ -32,7 +32,7 @@ h2 > a:hover {
     color: red;
 }
 
-#bootstrap-override h1.navbar-brand {
+#bootstrap-override h1.navbar-brand a {
     color: green;
 }
 
@@ -81,7 +81,7 @@ h4 {
     border: 1px solid gray;
 }
 
-/* Brand logos */
+/* Brand brand_logos */
 div.col-sm {
     text-align: center;
 }

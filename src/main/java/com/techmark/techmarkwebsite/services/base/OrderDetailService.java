@@ -2,7 +2,6 @@ package com.techmark.techmarkwebsite.services.base;
 
 import com.techmark.techmarkwebsite.models.Embeddables.OrderDetailId;
 import com.techmark.techmarkwebsite.models.OrderDetail;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

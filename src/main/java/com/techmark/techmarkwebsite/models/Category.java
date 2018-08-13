@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "categories")
-public class Category {
+public class Category implements Comparable<Category> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CategoryID")
@@ -58,5 +58,29 @@ public class Category {
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }
+    
+    @Override
+    public String toString() {
+        return "Category: " +
+            ", id = " + categoryId +
+            ", name = " + name;
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof Category) {
+            Category category = (Category) object;
+            return this.getCategoryId() == category.getCategoryId();
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public int compareTo(Category o) {
+        Integer thisId = this.getCategoryId();
+        Integer thatId = o.getCategoryId();
+        return thisId.compareTo(thatId);
     }
 }

@@ -80,4 +80,23 @@ public class OrderDetail {
 		public void setOrder(Order order) {
 			this.order = order;
 		}
+    
+    @Override
+    public String toString() {
+        return "OrderDetail: " +
+            "orderId = " + orderDetailId.getOrderId() +
+            "productId = " + orderDetailId.getProductId() +
+            ", productPrice = " + productPrice +
+            ", quantity = " + quantity;
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof OrderDetail) {
+            OrderDetail orderDetail = (OrderDetail) object;
+            return this.getOrderDetailId().equals(orderDetail.getOrderDetailId());
+        }
+        
+        return false;
+    }
 }

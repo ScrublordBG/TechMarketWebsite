@@ -17,6 +17,15 @@ public class UserServiceImpl implements GenericService<User> {
 	
 	@Override
 	public void create(User user) {
+		List<User> allUsers = repository.getAll();
+		if (user != null) {
+			for (User u : allUsers) {
+				if (u.getUsername().equals(user.getUsername())) {
+					System.out.printf("User with username: \"%s\" already exits!\n", user.getUsername());
+					return;
+				}
+			}
+		}
 		repository.create(user);
 	}
 	

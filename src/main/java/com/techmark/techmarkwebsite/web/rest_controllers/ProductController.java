@@ -1,8 +1,9 @@
-package com.techmark.techmarkwebsite.web;
+package com.techmark.techmarkwebsite.web.rest_controllers;
 
 import com.techmark.techmarkwebsite.models.Category;
 import com.techmark.techmarkwebsite.models.Product;
 import com.techmark.techmarkwebsite.services.base.GenericService;
+import com.techmark.techmarkwebsite.services.base.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +12,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-    private GenericService<Product> service;
+    private ProductService service;
 
     @Autowired
-    public ProductController(GenericService<Product> service) {
+    public ProductController(ProductService service) {
         this.service = service;
     }
 
@@ -60,7 +61,12 @@ public class ProductController {
         if (!priceString.equals("")){
             price =Integer.parseInt(priceString);
         }
-        int categoryId = Integer.parseInt(categoryIdString);
+        
+        int categoryId = 0;
+        if (!categoryIdString.equals("")){
+            categoryId = Integer.parseInt(categoryIdString);
+        }
+        
         Category category = new Category(categoryId, categoryName);
         Product updatedProduct = new Product(productId, name, price, description, imageUrl, category);
         service.update(productId, updatedProduct);

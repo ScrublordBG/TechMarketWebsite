@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 @Table(name = "products")
 @JsonSerialize(using = ProductSerializer.class)
-public class Product {
+public class Product implements Comparable<Product> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ProductID")
@@ -106,11 +106,36 @@ public class Product {
         this.category = category;
     }
 	
-	public List<OrderDetail> getOrderDetails() {
+	  public List<OrderDetail> getOrderDetails() {
 		return orderDetails;
 	}
 	
-	public void setOrderDetails(List<OrderDetail> orderDetails) {
+	  public void setOrderDetails(List<OrderDetail> orderDetails) {
 		this.orderDetails = orderDetails;
 	}
+    
+    @Override
+    public String toString() {
+        return "Product: " +
+            "id = " + productId +
+            ", name = " + name +
+            ", price = " + price +
+            ", description = " + description +
+            ", category" + category;
+    }
+    
+    @Override
+    public boolean equals(Object object) {
+        if (object instanceof Product) {
+            Product product = (Product) object;
+            return this.getName().equals(product.getName());
+        }
+        
+        return false;
+    }
+    
+    @Override
+    public int compareTo(Product o) {
+        return this.getName().compareTo(o.getName());
+    }
 }

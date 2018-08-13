@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<!-- Carousel -->
+<div id="carouselIndicators" class="carousel slide" data-ride="carousel" data-interval="2000" data-pause="hover">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100" src="images/carousel/Discounts 1000x300.jpg" alt="Discounts">
+            <div class="carousel-caption d-none d-md-block">
+                <a href="#" class="btn btn-secondary">Read More</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="images/carousel/Blog-1000x300.jpg" alt="Blog">
+            <div class="carousel-caption d-none d-md-block">
+                <a href="#" class="btn btn-secondary">Read More</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="images/carousel/Doogee X10 Sale 1000x300.png" alt="Doogee X10 Sale">
+            <div class="carousel-caption d-none d-md-block">
+                <a href="#" class="btn btn-secondary">Read More</a>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100" src="images/carousel/Home control 1000x300.jpg" alt="Home control">
+            <div class="carousel-caption d-none d-md-block">
+                <a href="#" class="btn btn-secondary">Read More</a>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+<!-- Wrap the rest of the page in another container to center all the content. -->
+<div class="container marketing">
+<!-- What's new? section -->
+    <hr>
+    <h4>What's new</h4>
+    <hr>
+
+    <div class="container" th:if="${not #lists.isEmpty(latestTen)}">
+        <div class="row">
+            <div class="col-lg-4 col-md-4" th:each="latest : ${latestTen}">
+                <div class="card card-list">
+                    <a href="#">
+                        <span class="badge badge-success">New</span>
+                        <img class="card-img-top" alt="Card image cap" th:src="${latest.imageUrl}">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <h6 class="card-subtitle mb-2 text-muted"><i class="mdi mdi-home-map-marker" th:text="${latest.name}"></i></h6>
+
+                            <h2 class="text-success mb-0 mt-3" th:text=" 'BGN ' + ${latest.price}">
+
+                            </h2>
+                        </div>
+                        <!--<div class="card-footer">
+                            <span><i class="mdi mdi-sofa"></i> Category : <strong th:text="${latest.category.name}"></strong></span>
+                            <span><i class="mdi mdi-scale-bathroom" th:text="${latest.description}"></i></span>
+                        </div>-->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Products List -->
+
+    <hr>
+    <h4>Brands</h4>
+    <hr>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <a class="brands-02" href="/en/samsung" title="Samsung">
+                    <img src="images/brand_logos/Samsung_logo_256x256.png" data-mid="13" width="120" height="124" title="Samsung" alt="Samsung logo">
+                    <div class="brands-02-text">Samsung</div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a class="brands-02" href="/en/apple" title="Apple">
+                    <img src="images/brand_logos/apple-logo.jpg" data-mid="13" width="120" height="124" title="Apple" alt="Apple logo">
+                    <div class="brands-02-text">Apple</div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a class="brands-02" href="/en/xiaomi" title="Xiaomi">
+                    <img src="images/brand_logos/Xiaomi-logo.png" data-mid="13" width="120" height="124" title="Xiaomi" alt="Xiaomi logo">
+                    <div class="brands-02-text">Xiaomi</div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a class="brands-02" href="/en/sony" title="Sony">
+                    <img src="images/brand_logos/sony-logo 500x500.png" data-mid="13" width="120" height="124" title="Sony" alt="Sony logo">
+                    <div class="brands-02-text">Sony</div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a class="brands-02" href="/en/htc" title="Htc">
+                    <img src="images/brand_logos/htc-logo 500x500.png" data-mid="13" width="120" height="124" title="Htc" alt="Htc logo">
+                    <div class="brands-02-text">HTC</div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <a class="brands-02" href="/en/philips" title="Philips">
+                    <img src="images/brand_logos/philips-logo.jpg" data-mid="13" width="120" height="124" title="Philips" alt="Philips logo">
+                    <div class="brands-02-text">Philips</div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a class="brands-02" href="/en/hp" title="Hp">
+                    <img src="images/brand_logos/HP-logo 2000x2000.png" data-mid="13" width="120" height="124" title="Hp" alt="Hp logo">
+                    <div class="brands-02-text">HP</div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a class="brands-02" href="/en/acer" title="Acer">
+                    <img src="images/brand_logos/acer-logo 800x800.png" data-mid="13" width="120" height="124" title="Acer" alt="Acer logo">
+                    <div class="brands-02-text">Acer</div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a class="brands-02" href="/en/doogee" title="Doogee">
+                    <img src="images/brand_logos/doogee-logo.jpg" data-mid="13" width="120" height="124" title="Doogee" alt="Doogee logo">
+                    <div class="brands-02-text">Doogee</div>
+                </a>
+            </div>
+            <div class="col-sm">
+                <a class="brands-02" href="/en/lenovo" title="Lenovo">
+                    <img src="images/brand_logos/lenovo-logo 500x500.png" data-mid="13" width="120" height="124" title="Lenovo" alt="Lenovo logo">
+                    <div class="brands-02-text">Lenovo</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

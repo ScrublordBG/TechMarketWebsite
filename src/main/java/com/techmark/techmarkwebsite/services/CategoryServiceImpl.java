@@ -25,6 +25,21 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Override
 	public void create(Category category) {
+		List<Category> allCategories = repository.getAll();
+		if (category != null) {
+			for (Category cat : allCategories) {
+				if (cat.getName().equals(category.getName())) {
+					System.out.printf("Category with name = \"%s\" already exits!\n", category.getName());
+					return;
+				}
+			}
+		}
+		/*allCategories.stream()
+				.filter(categoryItem -> category.getName().equals(categoryItem.getName()))
+				.findAny()
+				.ifPresent(s -> {
+					System.out.println("Category already exists!");
+					return;});*/
 		repository.create(category);
 	}
 	

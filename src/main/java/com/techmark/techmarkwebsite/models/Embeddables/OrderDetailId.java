@@ -53,4 +53,11 @@ public class OrderDetailId implements Serializable {
 	public int hashCode() {
 		return Objects.hash(getOrderId(), getProductId());
 	}
+	
+	@Override
+	public String toString() {
+		return "OrderDetailId: " +
+				"orderId = " + orderId +
+				", productId = " + productId;
+	}
 }
