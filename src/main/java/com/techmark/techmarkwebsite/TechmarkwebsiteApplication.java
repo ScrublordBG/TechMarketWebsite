@@ -15,7 +15,7 @@ public class TechmarkwebsiteApplication {
         SpringApplication.run(TechmarkwebsiteApplication.class, args);
         
     }
-
+// Should move bean to a separate class and package
     @Bean
     public SessionFactory createSessionFactory() {
         System.out.println("SessionFactory was created.");
